@@ -10,7 +10,7 @@ Encore
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
-    .setPublicPath('/build') // Note the leading '/'
+    .setPublicPath('build') // Note the leading '/'
     // Add alias for controllers.json
     .addAliases({
         '@symfony/stimulus-bridge/controllers.json': '/assets/controllers.json'
