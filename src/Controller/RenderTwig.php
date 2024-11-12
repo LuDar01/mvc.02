@@ -44,14 +44,13 @@ class RenderTwig extends AbstractController
         // Define the list of routes
         $routes = [
             ['path' => '/api/quote',
-            'name' => 'Quote of the day', 
+            'name' => 'Quote of the day',
             'description' => 'Returns a random motivational quote in JSON format.']
         ];
-    
+
         // Render the template and pass the routes variable
         return $this->render('json_api.html.twig', [
             'routes' => $routes
         ]);
-    }    
-
+    }
 }

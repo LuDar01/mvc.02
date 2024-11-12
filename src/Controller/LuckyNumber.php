@@ -17,5 +17,4 @@ class LuckyNumber
             '<html><body>Lucky number: '.$number.'</body></html>'
         );
     }
-    
 }

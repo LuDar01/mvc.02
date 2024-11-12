@@ -31,5 +31,4 @@ class JsonQuote
 
         return $response;
     }
-
 }
