@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}About{% endblock %}
+{% block title %}Dice{% endblock %}
 
 {% block body %}
 
@@ -10,7 +10,7 @@
 
 <ul>
 {% for roll in diceRoll %}
-    <li>{{ roll }}</li>
+    <div class='die'>{{ roll }}</div>
 {% endfor %}
 </ul>
 

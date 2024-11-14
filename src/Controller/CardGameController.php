@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Card\Card;
+use App\Card\CardGraphic;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +20,7 @@ class CardGameController extends AbstractController
     #[Route("/game/pig/roll", name: "test_roll_dice")]
     public function testRollDice(): Response
     {
-        $die = new Card();
+        $die = new CardGraphic();
 
         $data = [
             "dice" => $die->roll(),
@@ -38,7 +39,7 @@ class CardGameController extends AbstractController
 
         $diceRoll = [];
         for ($i = 1; $i <= $num; $i++) {
-            $die = new Card();
+            $die = new CardGraphic();
             $die->roll();
             $diceRoll[] = $die->getAsString();
         }

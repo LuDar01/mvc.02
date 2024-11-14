@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Dice;
+namespace App\Card;
 
 class CardGraphic extends Card
+
 {
     private $representation = [
         '⚀',
