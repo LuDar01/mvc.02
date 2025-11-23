@@ -11,8 +11,9 @@ use App\Card\DeckOfCards;
 class CardController extends AbstractController
 {
     #[Route('/card', name: 'card_home')]
-    public function home(): Response
+    public function home(SessionInterface $session): Response
     {
+        $deck = DeckOfCards::loadFromSession($session);
         return $this->render('card/index.twig');
     }
 

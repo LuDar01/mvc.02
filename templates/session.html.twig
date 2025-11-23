@@ -10,17 +10,19 @@
 {% endfor %}
 
 <div class="actions">
-    <a href="{{ path('session_delete') }}" class="btn btn-danger">Radera sessionen</a> |
-    <a href="{{ path('card_home') }}">Tillbaka till kort hem</a>
+    <a href="{{ path('session_delete') }}" class="btn btn-danger">Delete sessionen</a> |
+    <a href="{{ path('card_home') }}">Back to Card Index</a>
 </div>
 
 <div class="session-info">
     <h2>Session Data</h2>
     <ul>
         <li><strong>Session ID:</strong> {{ sessionData.session_id }}</li>
+        <li><strong>Cards in Deck:</strong> {{ sessionData.card_count }}</li>
+
     </ul>
 
-    <h3>All Session Data:</h3>
+    <h3>Current Session Data:</h3>
     <pre>{{ sessionData.all_data|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
 </div>
 

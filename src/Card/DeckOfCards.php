@@ -58,7 +58,10 @@ class DeckOfCards
         $deckData = $session->get('deck_data');
         
         if (!$deckData) {
-            return new self();
+            // Create new deck AND save it to session immediately
+            $deck = new self();
+            $deck->saveToSession($session);
+            return $deck;
         }
 
         $deck = new self();
