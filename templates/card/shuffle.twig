@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shuffled Deck{% endblock %}
+
+
+{% block body %}
+<h1>Shuffled Deck</h1>
+
+<div class="actions">
+    <a href="{{ path('card_deck') }}">Back to deck</a>
+</div>
+
+<div class="card-container">
+    {% for card in cards %}
+        <div class="card {{ card.getSuitClass() }}">
+            <div class="card-top">{{ card.getValueAsString() }}{{ card.getSuitSymbol() }}</div>
+            <div class="card-center">{{ card.getSuitSymbol() }}</div>
+            <div class="card-bottom">{{ card.getValueAsString() }}{{ card.getSuitSymbol() }}</div>
+        </div>
+    {% endfor %}
+</div>
+
+<p>Total cards: {{ cards|length }}</p>
+
+{% endblock %}

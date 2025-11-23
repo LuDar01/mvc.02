@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Session Info{% endblock %}
+
+{% block body %}
+<h1>Session Information</h1>
+
+{% for message in app.flashes('success') %}
+    <div class="flash-success">{{ message }}</div>
+{% endfor %}
+
+<div class="actions">
+    <a href="{{ path('session_delete') }}" class="btn btn-danger">Radera sessionen</a> |
+    <a href="{{ path('card_home') }}">Tillbaka till kort hem</a>
+</div>
+
+<div class="session-info">
+    <h2>Session Data</h2>
+    <ul>
+        <li><strong>Session ID:</strong> {{ sessionData.session_id }}</li>
+    </ul>
+
+    <h3>All Session Data:</h3>
+    <pre>{{ sessionData.all_data|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
+</div>
+
+{% endblock %}

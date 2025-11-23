@@ -1,26 +1,22 @@
 <?php
-
 namespace App\Card;
 
 class CardGraphic extends Card
-
 {
-    private $representation = [
-        '⚀',
-        '⚁',
-        '⚂',
-        '⚃',
-        '⚄',
-        '⚅',
-    ];
-
-    public function __construct()
+    public function getUnicode(): string
     {
-        parent::__construct();
+        $suits = ['hearts' => '♥', 'spades' => '♠', 'clubs' => '♣', 'diamonds' => '♦'];
+        return $this->getValueAsString() . $suits[$this->getSuit()];
     }
 
-    public function getAsString(): string
+    public function getSuitSymbol(): string
     {
-        return $this->representation[$this->value - 1];
+        $suits = ['hearts' => '♥', 'spades' => '♠', 'clubs' => '♣', 'diamonds' => '♦'];
+        return $suits[$this->getSuit()];
+    }
+
+    public function getSuitClass(): string
+    {
+        return $this->getSuit();
     }
 }

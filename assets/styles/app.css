@@ -1,3 +1,7 @@
+/* Your existing app.css content */
+
+@import 'card.css';
+
 body {
     margin: 0 auto;
     background-color: rgb(249, 211, 217);

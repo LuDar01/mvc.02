@@ -1,3 +1,63 @@
-.die {
-    font-size: 3em;
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+    justify-content: center;
 }
+
+.card {
+    width: 80px;
+    height: 120px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    position: relative;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.4);
+}
+
+.card.hearts, .card.diamonds {
+    background: linear-gradient(135deg, #ffffff, #fff0f0);
+    color: #e00;
+    border-color: #e00;
+}
+
+.card.spades, .card.clubs {
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    color: #000;
+    border-color: #000;
+}
+
+.card-top {
+    font-size: 1.1em;
+    text-align: left;
+    line-height: 1;
+}
+
+.card-center {
+    font-size: 2em;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-bottom {
+    font-size: 1.1em;
+    text-align: right;
+    line-height: 1;
+    transform: rotate(180deg);
+}
+
