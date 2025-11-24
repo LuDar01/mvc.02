@@ -1,12 +1,17 @@
+{# templates/me.html.twig #}
 {% extends "base.html.twig" %}
 
-{% block title %}Index{% endblock %}
+{% block title %}About Me{% endblock %}
 
 {% block body %}
-
-    <h1>Me</h1>
-    <p>Mitt namn är Luda. Jag är student på första året i webbprogrammeringsprogrammet i BTH.</p>
-    <p>Jag hade ingen tidigare erfarenhet av programmerin ginnan jag började, men jag tycker det är kult nu när jag lär mig mer och mer.</p>
-    <img class='img1'src="{{ asset('img/LDsun.jpeg') }}" alt="me">
-
+<div class="layout">
+    <div class="column">
+        <h1>About Me</h1>
+        <p>Mitt namn är LuDa. Jag är student på första året i webbprogrammeringsprogrammet i BTH.</p>
+        <p>Jag hade ingen tidigare erfarenhet av programmering innan jag började, men jag tycker det är kul nu när jag lär mig mer och mer.</p>
+    </div>
+    <div class="column">
+        <img class="img" src="{{ asset('img/LDsun.jpeg') }}" alt="Profile Image">
+    </div>
+</div>
 {% endblock %}

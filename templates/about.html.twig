@@ -1,22 +1,22 @@
+{# templates/about.html.twig #}
 {% extends "base.html.twig" %}
 
-{% block title %}About{% endblock %}
+{% block title %}About MVC{% endblock %}
 
 {% block body %}
-<div class= 'layout'>
-    <div class= 'column'>
-    <h1>MVC(Model-View-Controller)</h1>
-    <p>Det är en arkitektonisk ramverk som används inom webbutveckling.</p>
-    <p>Den delar applikationen i tre delar: Modellen som hanterar datan och logik, View(vyn), som hanterar användarens interaktioner, och controller(styrenheten) som förmedlar mellan modell och vyn.</p>
-    <img class='img'src="{{ asset('img/mvc.png') }}" alt="mvc">
+<div class="layout">
+    <div class="column">
+        <h1>MVC (Model-View-Controller)</h1>
+        <p>Det är en arkitektonisk ramverk som används inom webbutveckling.</p>
+        <p>Den delar applikationen i tre delar: Modellen som hanterar datan och logik, View(vyn), som hanterar användarens interaktioner, och controller(styrenheten) som förmedlar mellan modell och vyn.</p>
+        <img class="img" src="{{ asset('img/mvc.png') }}" alt="MVC Architecture">
     </div>
-    <div class= 'column'>
-
-    <ul>
-    <li><a href='https://github.com/dbwebb-se/mvc/tree/main'>Kursens Github</a>
-    <li><a href='https://github.com/LuDar01/mvc.02/tree/main'>MVC GitHub kursrepo</a>
-    </ul>
+    <div class="column">
+        <h2>Resurser</h2>
+        <ul>
+            <li><a href="https://github.com/dbwebb-se/mvc/tree/main">Kursens GitHub</a></li>
+            <li><a href="https://github.com/LuDar01/mvc.02/tree/main">MVC GitHub kursrepo</a></li>
+        </ul>
     </div>
 </div>
-     
 {% endblock %}

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -12,25 +13,60 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+
     <body>
-        <header class="site-header" style="background-image: url({{ asset('img/LDsun.jpeg') }})">
-        <nav class= 'navbar'>
-            <ul>
-                <li class='nav-title'><a href="{{ path('me') }}">Me</a></li>
-                <li class='nav-title'><a href="{{ path('about') }}">About</a></li>
-                <li class='nav-title'><a href="{{ path('report') }}">Report</a></li>
-                <li class= 'nav-title'><a href="{{ path('lucky_number') }}">Lucky</a></li>
-                <li class= 'nav-title'><a href="{{ path('json_api') }}">Api</a></li>
-                <li class= 'nav-title'><a href="{{ path('card_home') }}">Card</a></li>
-                <li class='nav-title'><a href="{{ path('session_show') }}">Session</a></li>
 
+        <nav class="navbar">
+            <a class="navbar-brand" href="{{ path('me') }}">LuDaMvc</a>
 
+            <ul class="nav-menu">
+                <li><a href="{{ path('me') }}">Me</a></li>
+                <li><a href="{{ path('about') }}">About</a></li>
+                <li><a href="{{ path('report') }}">Report</a></li>
+                <li><a href="{{ path('lucky_number') }}">Lucky</a></li>
+                <li><a href="{{ path('json_api') }}">Api</a></li>
+                <li><a href="{{ path('card_home') }}">Card</a></li>
+                <li><a href="{{ path('session_show') }}">Session</a></li>
             </ul>
+            
+        <button class="hamburger" aria-label="Toggle menu">
+            <span class=""></span>
+            <span class=""></span>
+            <span class=""></span>
+        </button>
+
         </nav>
+
+        <header class="site-header"
+            style="background-image: url({{ asset('img/LDsun.jpeg') }});">
         </header>
 
-    <main>{% block body %} {% endblock %}</main>
+        <main>
+            {% block body %}{% endblock %}
+        </main>
 
-    <footer class="site-footer" </footer>
+        <footer class="site-footer">
+            <p>&copy; {{ "now"|date("Y") }} LuDa - Webbprogrammering BTH</p>
+        </footer>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const hamburger = document.querySelector('.hamburger');
+                const navMenu = document.querySelector('.nav-menu');
+
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+            });
+        </script>
+
     </body>
 </html>
