@@ -61,3 +61,29 @@
     transform: rotate(180deg);
 }
 
+@media (max-width: 768px) {
+    .card {
+        width: 80px;
+        height: 120px;
+    }
+    
+    .card-center {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 70px;
+        height: 105px;
+        padding: 8px;
+    }
+    
+    .card-center {
+        font-size: 1.6em;
+    }
+    
+    .card-top, .card-bottom {
+        font-size: 1em;
+    }
+}
