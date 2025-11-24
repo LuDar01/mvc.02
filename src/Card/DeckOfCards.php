@@ -26,7 +26,18 @@ class DeckOfCards
 
     public function draw(int $num = 1): array
     {
-        return array_splice($this->cards, 0, $num);
+        $drawn = [];
+        for ($i = 0; $i < $num; $i++) {
+            if (empty($this->cards)) {
+                break;
+            }
+            $randomIndex = array_rand($this->cards);
+            $drawn[] = $this->cards[$randomIndex];
+            unset($this->cards[$randomIndex]);
+            // Re-index the array after removal
+            $this->cards = array_values($this->cards);
+        }
+        return $drawn;
     }
 
     public function getCards(): array
@@ -41,7 +52,6 @@ class DeckOfCards
 
     public function saveToSession(SessionInterface $session): void
     {
-        // Store deck as serialized data
         $deckData = [];
         foreach ($this->cards as $card) {
             $deckData[] = [
@@ -58,7 +68,6 @@ class DeckOfCards
         $deckData = $session->get('deck_data');
         
         if (!$deckData) {
-            // Create new deck AND save it to session immediately
             $deck = new self();
             $deck->saveToSession($session);
             return $deck;

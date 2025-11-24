@@ -3,11 +3,54 @@
 {% block title %}API Landing Page{% endblock %}
 
 {% block body %}
-    <h1>API Landing Page</h1>
-    <p>Here are the JSON endpoints available:</p>
-    <ul>
-        {% for route in routes %}
-            <li><a href="{{ route.path }}">{{ route.name }}</a> - {{ route.description }}</li>
-        {% endfor %}
-    </ul>
+<h1>API Landing Page</h1>
+<hr>
+
+<p>Here are the JSON endpoints available:</p>
+
+<ul>
+    {% for route in routes %}
+        {% set cleanPath = route.path|replace({'//':'/'})|trim('/') %}
+        {% set cleanPath = '/' ~ cleanPath %}
+
+        <li style="margin-bottom: 12px;">
+
+            {% if route.method == 'GET' %}
+                {# GET clickable #}
+                <a href="{{ cleanPath }}" target="_blank">{{ route.name }}</a>
+
+            {% else %}
+
+                {% if '{number}' in route.path %}
+                    {# Draw multiple cards - use path parameter #}
+                    <form method="post" style="display:inline-block;" id="drawForm{{ loop.index }}">
+                        <input type="number" name="number" min="1" max="52" value="3" placeholder="number" required 
+                               onchange="updateDrawAction({{ loop.index }}, this.value)">
+                        <button type="submit">{{ route.name }} (POST)</button>
+                    </form>
+                    <script>
+                        function updateDrawAction(formIndex, number) {
+                            document.getElementById('drawForm' + formIndex).action = '/api/deck/draw/' + number;
+                        }
+                        // Initialize form action on page load
+                        document.addEventListener('DOMContentLoaded', function() {
+                            updateDrawAction({{ loop.index }}, 3);
+                        });
+                    </script>
+
+                {% else %}
+                    {# Simple POST #}
+                    <form action="{{ cleanPath }}" method="post" style="display:inline-block;">
+                        <button type="submit">{{ route.name }} (POST)</button>
+                    </form>
+
+                {% endif %}
+            {% endif %}
+
+            – {{ route.description }}
+        </li>
+    {% endfor %}
+</ul>
+
+
 {% endblock %}

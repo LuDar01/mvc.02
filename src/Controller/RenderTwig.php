@@ -17,13 +17,9 @@ class RenderTwig extends AbstractController
     #[Route("/lucky", name: "lucky_number")]
     public function number(): Response
     {
-        $number = random_int(0, 100);
-
-        $data = [
-            'number' => $number
-        ];
-
-        return $this->render('lucky_number.html.twig', $data);
+        return $this->render('lucky_number.html.twig', [
+            'number' => random_int(0, 100),
+        ]);
     }
 
     #[Route("/about", name: "about")]
@@ -33,7 +29,7 @@ class RenderTwig extends AbstractController
     }
 
     #[Route("/report", name: "report")]
-    public function home(): Response
+    public function report(): Response
     {
         return $this->render('report.html.twig');
     }
@@ -41,16 +37,14 @@ class RenderTwig extends AbstractController
     #[Route("/api", name: "json_api")]
     public function apiLanding(): Response
     {
-        // Define the list of routes
         $routes = [
-            ['path' => '/api/quote',
-            'name' => 'Quote of the day',
-            'description' => 'Returns a random motivational quote in JSON format.']
+            ['path' => '/api/quote', 'name' => 'Quote of the day', 'description' => 'Random quote', 'method' => 'GET'],
+            ['path' => '/api/deck', 'name' => 'Get Deck', 'description' => 'Full sorted deck', 'method' => 'GET'],
+            ['path' => '/api/deck/shuffle', 'name' => 'Shuffle Deck', 'description' => 'Shuffles deck', 'method' => 'POST'],
+            ['path' => '/api/deck/draw', 'name' => 'Draw Card', 'description' => 'Draw 1 card', 'method' => 'POST'],
+            ['path' => '/api/deck/draw/{number}', 'name' => 'Draw Multiple Cards', 'description' => 'Draws {number} cards', 'method' => 'POST'],
         ];
 
-        // Render the template and pass the routes variable
-        return $this->render('json_api.html.twig', [
-            'routes' => $routes
-        ]);
+        return $this->render('json_api.html.twig', ['routes' => $routes]);
     }
 }
