@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Play 21{% endblock %}
+
+{% block body %}
+<h1>21 Game</h1>
+
+<div class="game-board">
+    <div class="player-section">
+        <h2>Your Hand (Score: {{ game.playerScore }})</h2>
+        <div class="card-container">
+            {% for card in game.player.cards %}
+                <div class="card {{ card.getSuitClass() }}">
+                    <div class="card-top">{{ card.getValueAsString() }}{{ card.getSuitSymbol() }}</div>
+                    <div class="card-center">{{ card.getSuitSymbol() }}</div>
+                    <div class="card-bottom">{{ card.getValueAsString() }}{{ card.getSuitSymbol() }}</div>
+                </div>
+            {% else %}
+                <p>No cards yet</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="bank-section">
+        <h2>Bank's Hand (Score: {{ game.bankScore }})</h2>
+        <div class="card-container">
+            {% for card in game.bank.cards %}
+                <div class="card {{ card.getSuitClass() }}">
+                    <div class="card-top">{{ card.getValueAsString() }}{{ card.getSuitSymbol() }}</div>
+                    <div class="card-center">{{ card.getSuitSymbol() }}</div>
+                    <div class="card-bottom">{{ card.getValueAsString() }}{{ card.getSuitSymbol() }}</div>
+                </div>
+            {% else %}
+                <p>No cards yet</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="game-controls">
+        {% if game.state == 'player_turn' %}
+            <a href="{{ path('game_draw') }}" class="btn btn-primary">Draw Card</a>
+            <a href="{{ path('game_stand') }}" class="btn btn-secondary">Stand</a>
+        {% else %}
+            <div class="game-result">
+                {% if game.state == 'player_wins' %}
+                    <h3 class="text-success">You Win!</h3>
+                {% elseif game.state == 'bank_wins' %}
+                    <h3 class="text-danger">Bank Wins!</h3>
+                {% elseif game.state == 'draw' %}
+                    <h3 class="text-warning">It's a Draw!</h3>
+                {% endif %}
+            </div>
+            <a href="{{ path('game_reset') }}" class="btn btn-primary">New Game</a>
+        {% endif %}
+        <a href="{{ path('game_home') }}" class="btn btn-outline">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

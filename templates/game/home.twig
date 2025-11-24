@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %}21 Game{% endblock %}
+
+{% block body %}
+<h1>21 Game</h1>
+
+<div class="game-intro">
+    <h2>Welcome to the 21 Card Game!</h2>
+    
+    <div class="game-description">
+        <h3>Game Rules:</h3>
+        <ul>
+            <li>The goal is to get as close to 21 as possible without going over</li>
+            <li>You play against the bank (dealer)</li>
+            <li>Number cards are worth their face value</li>
+            <li>Face cards (Jack, Queen, King) are worth 10 points</li>
+            <li>Aces are worth 1 or 11 points (automatically chosen for best score)</li>
+            <li>If you go over 21, you lose automatically</li>
+            <li>If you stand, the bank will draw cards until it has 17 or more</li>
+            <li>Whoever has the highest score without exceeding 21 wins</li>
+        </ul>
+    </div>
+
+    <div class="game-actions">
+        <a href="{{ path('game_start') }}" class="btn btn-primary">Start New Game</a>
+        <a href="{{ path('game_doc') }}" class="btn btn-secondary">View Documentation</a>
+    </div>
+</div>
+{% endblock %}

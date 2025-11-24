@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game Documentation{% endblock %}
+
+{% block body %}
+<h1>21 Game Documentation</h1>
+
+<div class="documentation">
+    <h2>Flödesschema</h2>
+    <img src="{{ asset('img/flowchart.png') }}" alt="Game Flowchart" class="img-fluid">
+    
+    <h2>Pseudokod</h2>
+    <pre class="pseudocode">
+    START GAME
+    SHUFFLE DECK
+    INITIALIZE PLAYER AND BANK HANDS
+    
+    WHILE player_turn
+        SHOW PLAYER HAND AND SCORE
+        IF player_score > 21 THEN
+            bank_wins
+        ELSE IF player_stands THEN
+            bank_turn
+        END IF
+    END WHILE
+    
+    WHILE bank_turn AND bank_score < 17
+        bank_draws_card
+    END WHILE
+    
+    COMPARE_SCORES:
+        IF bank_score > 21 OR player_score > bank_score THEN player_wins
+        ELSE IF bank_score > player_score THEN bank_wins
+        ELSE draw
+    END COMPARE_SCORES
+    </pre>
+    
+    <h2>Klasser</h2>
+    <ul>
+        <li><strong>Card:</strong> Representerar ett enskilt kort med färg och värde</li>
+        <li><strong>CardGraphic:</strong> Extenderar Card med grafisk representation</li>
+        <li><strong>CardHand:</strong> Hanterar en samling kort</li>
+        <li><strong>DeckOfCards:</strong> Representerar en hel kortlek med blandning och dragningsfunktion</li>
+        <li><strong>Game:</strong> Hanterar spelets logik och tillstånd</li>
+        <li><strong>GameController:</strong> Hanterar HTTP requests och sessioner</li>
+    </ul>
+</div>
+
+<style>
+.pseudocode {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    white-space: pre-wrap;
+    font-family: 'Courier New', monospace;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+{% endblock %}
