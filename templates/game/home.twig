@@ -1,3 +1,4 @@
+{# templates/game/home.twig #}
 {% extends "base.html.twig" %}
 
 {% block title %}21 Game{% endblock %}
@@ -23,8 +24,10 @@
     </div>
 
     <div class="game-actions">
-        <a href="{{ path('game_start') }}" class="btn btn-primary">Start New Game</a>
+        <a href="{{ path('game_play') }}" class="btn btn-primary">Start New Game</a>
         <a href="{{ path('game_doc') }}" class="btn btn-secondary">View Documentation</a>
     </div>
+
 </div>
 {% endblock %}
+
