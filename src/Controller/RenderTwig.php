@@ -43,6 +43,7 @@ class RenderTwig extends AbstractController
             ['path' => '/api/deck/shuffle', 'name' => 'Shuffle Deck', 'description' => 'Shuffles deck', 'method' => 'POST'],
             ['path' => '/api/deck/draw', 'name' => 'Draw Card', 'description' => 'Draw 1 card', 'method' => 'POST'],
             ['path' => '/api/deck/draw/{number}', 'name' => 'Draw Multiple Cards', 'description' => 'Draws {number} cards', 'method' => 'POST'],
+            ['path' => '/api/game', 'name' => 'Game Status', 'description' => 'Current game state and scores', 'method' => 'GET'],
         ];
 
         return $this->render('json_api.html.twig', ['routes' => $routes]);

@@ -12,12 +12,13 @@
     {% for route in routes %}
         {% set cleanPath = route.path|replace({'//':'/'})|trim('/') %}
         {% set cleanPath = '/' ~ cleanPath %}
+        {% set fullPath = app.request.basePath ~ cleanPath %}
 
         <li style="margin-bottom: 12px;">
 
             {% if route.method == 'GET' %}
                 {# GET clickable #}
-                <a href="{{ cleanPath }}" target="_blank">{{ route.name }}</a>
+                <a href="{{ fullPath }}" target="_blank">{{ route.name }}</a>
 
             {% else %}
 
@@ -28,11 +29,14 @@
                                onchange="updateDrawAction({{ loop.index }}, this.value)">
                         <button type="submit">{{ route.name }} (POST)</button>
                     </form>
+
                     <script>
                         function updateDrawAction(formIndex, number) {
-                            document.getElementById('drawForm' + formIndex).action = '/api/deck/draw/' + number;
+                            const base = "{{ app.request.basePath }}";
+                            document.getElementById('drawForm' + formIndex).action =
+                                base + "/api/deck/draw/" + number;
                         }
-                        // Initialize form action on page load
+
                         document.addEventListener('DOMContentLoaded', function() {
                             updateDrawAction({{ loop.index }}, 3);
                         });
@@ -40,7 +44,7 @@
 
                 {% else %}
                     {# Simple POST #}
-                    <form action="{{ cleanPath }}" method="post" style="display:inline-block;">
+                    <form action="{{ fullPath }}" method="post" style="display:inline-block;">
                         <button type="submit">{{ route.name }} (POST)</button>
                     </form>
 
@@ -51,6 +55,5 @@
         </li>
     {% endfor %}
 </ul>
-
 
 {% endblock %}
