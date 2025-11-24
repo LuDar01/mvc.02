@@ -55,7 +55,16 @@
     </div>
 
     <h2> Kmom03</h2>
-    <div id='kmom03'> </div>
+    <div id='kmom03'> 
+    <p>Uppgiften att modellera kortspelets logik med ett flödesschema och pseudokod var en avgörande fas i den initiala problemlösningen. Denna process var instrumentell för att visualisera spelets sekventiella flöden och de logiska förgreningarna, vilket särskilt underlättade definitionen av spelets olika tillstånd, såsom player turn och bank turn. Jag anser att denna designmetodik är ovärderlig då den effektivt strukturerar tankearbetet, säkerställer en robust applikationsarkitektur och direkt stödjer implementeringen av det objektorienterade designmönstret.</p>
+
+    <p>Implementationen följde principen om en tunn Controller och en tjock Model. Kärnlogiken för spelet, inkapslad i klassen Game, hanterar kortlekens hantering, poängberäkning och vinstlogik. Denna separation av ansvar har resulterat i en GameController som enbart ansvarar för att hantera HTTP anrop, sessionstillstånd och initiering av spelobjektet. Jag är tillfreds med den objektorienterade renheten som uppnåtts. Dock ser jag en förbättringspotential i att formalisera tillståndsmaskinen ytterligare inom Game klassen för att tydligare hantera övergångarna mellan spelarens och bankens drag.</p>
+
+    <p>Erfarenheten av att koda i Symfony har blivit alltmer positiv. Ramverket har tvingat fram en disciplinerad tillämpning av MVC-arkitekturen (Model-View-Controller) och dess komponentbaserade natur främjar återanvändbarhet och modularitet. Även om ramverkets initiala komplexitet kan vara hög, uppvägs detta av den struktur och skalbarhet det tillhandahåller.</p>
+
+    <p>Min mest signifikanta Today I Learned (TIL) från detta kursmoment är vikten av att bibehålla en rigorös separation av bekymmer (Separation of Concerns). Genom att konsekvent flytta all affärslogik bort från Controller till dedikerade Model klasser, såsom Game, säkerställs en högre grad av testbarhet och en kodbas som är avsevärt enklare att underhålla och vidareutveckla.</p>
+    </div>
+
 
     <h2>Kmom04</h2>
     <div id='kmom04'> </div>
