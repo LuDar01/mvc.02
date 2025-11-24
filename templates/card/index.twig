@@ -5,6 +5,28 @@
 {% block body %}
 
 <h1>Card Home</h1>
+
+<p>
+    Min kortlekshantering är uppbyggd med flera objektorienterade klasser som arbetar tillsammans. 
+    Klassen <strong>Card</strong> representerar ett enskilt spelkort med färg och värde. 
+    Klassen <strong>DeckOfCards</strong> fungerar som en samling av Card-objekt och innehåller 
+    metoder för att skapa en kortlek, blanda den och dra kort. 
+    Klassen <strong>CardHand</strong> används när man behöver hantera flera dragna kort som en hand. 
+    API-funktionaliteten styrs av <strong>CardApiController</strong>, som tar emot anrop från användaren, 
+    interagerar med DeckOfCards-objektet i sessionen och skickar tillbaka JSON-svar.
+</p>
+
+<p>
+    Klasserna arbetar tillsammans genom komposition – till exempel består en DeckOfCards av många 
+    Card-objekt, och en CardHand kan bestå av flera kort som dragits från DeckOfCards. 
+    Kontrollerklassen använder dessa modeller för att utföra operationerna som användaren begär. 
+    Diagrammet nedan sammanfattar relationerna mellan klasserna i denna del av applikationen.
+</p>
+
+<h2>UML Klassdiagram</h2>
+
+<img src="{{ asset('img/MvcUml.png') }}" alt="MVC UML" style="max-width:400px; display:block; margin:20px 0;">
+
 <ul>
     <li><a href="{{ path('card_deck') }}">Visa kortleken</a></li>
     <li><a href="{{ path('card_shuffle') }}">Blanda kortleken</a></li>
@@ -12,4 +34,4 @@
     <li><a href="{{ path('card_draw_many', {num: 5}) }}">Dra 5 kort</a></li>
 </ul>
 
-{%endblock%}
+{% endblock %}
