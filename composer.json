@@ -76,7 +76,7 @@
         "symfony/polyfill-php81": "*",
         "symfony/polyfill-php82": "*"
     },
-    "scripts": {
+        "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
@@ -90,9 +90,16 @@
         ],
 
         "csfix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer --config=tools/php-cs-fixer/.php-cs-fixer.dist.php fix src tests",
-        "csfix:dry": "tools/php-cs-fixer/vendor/bin/php-cs-fixer --config=tools/php-cs-fixer/.php-cs-fixer.dist.php fix src tests --dry-run -v"
+        "csfix:dry": "tools/php-cs-fixer/vendor/bin/php-cs-fixer --config=tools/php-cs-fixer/.php-cs-fixer.dist.php fix src tests --dry-run -v",
         
+        "phpmd": "tools/phpmd/vendor/bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode || true",
+        "phpstan": "tools/phpstan/vendor/bin/phpstan analyse -c phpstan.neon || true",
+        "lint": [
+            "@phpmd",
+            "@phpstan"
+        ]
     },
+    
     "conflict": {
         "symfony/symfony": "*"
     },
