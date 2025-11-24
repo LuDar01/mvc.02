@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Card;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -66,7 +67,7 @@ class DeckOfCards
     public static function loadFromSession(SessionInterface $session): self
     {
         $deckData = $session->get('deck_data');
-        
+
         if (!$deckData) {
             $deck = new self();
             $deck->saveToSession($session);
@@ -75,7 +76,7 @@ class DeckOfCards
 
         $deck = new self();
         $deck->cards = [];
-        
+
         foreach ($deckData as $cardData) {
             if ($cardData['type'] === 'graphic') {
                 $deck->cards[] = new CardGraphic($cardData['suit'], $cardData['value']);
@@ -83,7 +84,7 @@ class DeckOfCards
                 $deck->cards[] = new Card($cardData['suit'], $cardData['value']);
             }
         }
-        
+
         return $deck;
     }
 }

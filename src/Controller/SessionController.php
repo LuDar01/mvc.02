@@ -33,11 +33,11 @@ class SessionController extends AbstractController
     public function delete(SessionInterface $session): Response
     {
         $session->clear();
-        
+
         // Auto-create a new sorted deck after deletion
         $deck = new DeckOfCards();
         $deck->saveToSession($session);
-        
+
         $this->addFlash('success', 'Sessionen har raderats och en ny sorterad kortlek har skapats!');
 
         return $this->redirectToRoute('session_show');

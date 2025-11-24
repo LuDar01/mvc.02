@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Card;
 
 class Card
@@ -28,7 +29,7 @@ class Card
         if (is_numeric($this->value)) {
             return (int)$this->value;
         }
-        
+
         switch ($this->value) {
             case 'J': return 11;
             case 'Q': return 12;

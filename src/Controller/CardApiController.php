@@ -14,7 +14,7 @@ class CardApiController extends AbstractController
     public function getDeck(SessionInterface $session): JsonResponse
     {
         $deck = DeckOfCards::loadFromSession($session);
-        
+
         $cardsData = [];
         foreach ($deck->getCards() as $card) {
             $cardsData[] = [
@@ -37,7 +37,7 @@ class CardApiController extends AbstractController
         $deck = new DeckOfCards();
         $deck->shuffle();
         $deck->saveToSession($session);
-        
+
         $cardsData = [];
         foreach ($deck->getCards() as $card) {
             $cardsData[] = [
@@ -69,7 +69,7 @@ class CardApiController extends AbstractController
     private function drawCards(int $number, SessionInterface $session): JsonResponse
     {
         $deck = DeckOfCards::loadFromSession($session);
-        
+
         if ($number > $deck->count()) {
             return $this->json([
                 'error' => 'Not enough cards left in deck. Only ' . $deck->count() . ' cards remaining.'
@@ -78,7 +78,7 @@ class CardApiController extends AbstractController
 
         $drawnCards = $deck->draw($number);
         $deck->saveToSession($session);
-        
+
         $drawnData = [];
         foreach ($drawnCards as $card) {
             $drawnData[] = [
