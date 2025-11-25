@@ -76,7 +76,7 @@
         "symfony/polyfill-php81": "*",
         "symfony/polyfill-php82": "*"
     },
-        "scripts": {
+    "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
@@ -97,9 +97,13 @@
         "lint": [
             "@phpmd",
             "@phpstan"
-        ]
+        ],
+
+        "phpdoc": "tools/phpdoc/phpdoc --config=tools/phpdoc/phpdoc.xml",
+
+        "phpunit":"XDEBUG_MODE=coverage vendor/bin/phpunit"
     },
-    
+
     "conflict": {
         "symfony/symfony": "*"
     },

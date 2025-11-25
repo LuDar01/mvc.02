@@ -245,6 +245,19 @@ button:hover, input[type="submit"]:hover {
     }
 }
 
+.pseudocode {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    white-space: pre-wrap;
+    font-family: 'Courier New', monospace;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
 img {
     max-width: 100%;
     height: auto;

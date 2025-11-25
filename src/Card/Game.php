@@ -27,9 +27,17 @@ class Game
         $this->state = 'player_turn';
     }
 
-    public function playerDraw(): Card
+    /**
+     * @return Card|null The drawn card, or null if the deck is empty.
+     */
+    public function playerDraw(): ?Card
     {
         $cards = $this->deck->draw(1);
+
+        if (empty($cards)) {
+            return null; // Deck is empty
+        }
+
         $card = $cards[0];
         $this->player->add($card);
 
@@ -49,9 +57,12 @@ class Game
     private function bankPlay(): void
     {
         $bankScore = $this->calculateScore($this->bank);
-        
+
         while ($bankScore < 17) {
             $cards = $this->deck->draw(1);
+            if (empty($cards)) {
+                break;
+            }
             $this->bank->add($cards[0]);
             $bankScore = $this->calculateScore($this->bank);
         }
@@ -64,10 +75,10 @@ class Game
         $playerScore = $this->calculateScore($this->player);
         $bankScore = $this->calculateScore($this->bank);
 
-        if ($bankScore > 21) {
-            $this->state = 'player_wins';
-        } elseif ($playerScore > 21) {
+        if ($playerScore > 21) {
             $this->state = 'bank_wins';
+        } elseif ($bankScore > 21) {
+            $this->state = 'player_wins';
         } elseif ($playerScore > $bankScore) {
             $this->state = 'player_wins';
         } elseif ($bankScore > $playerScore) {
@@ -81,7 +92,7 @@ class Game
     {
         $score = 0;
         $aces = 0;
-        
+
         foreach ($hand->getCards() as $card) {
             $value = $card->getValue();
             if ($value == 1) {
@@ -93,12 +104,12 @@ class Game
                 $score += $value;
             }
         }
-        
+
         while ($score > 21 && $aces > 0) {
             $score -= 10;
             $aces--;
         }
-        
+
         return $score;
     }
 

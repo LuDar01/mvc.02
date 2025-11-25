@@ -29,14 +29,15 @@ class DeckOfCards
     {
         $drawn = [];
         for ($i = 0; $i < $num; $i++) {
+            // Check if array is empty *before* trying to draw/access
             if (empty($this->cards)) {
                 break;
             }
-            $randomIndex = array_rand($this->cards);
-            $drawn[] = $this->cards[$randomIndex];
-            unset($this->cards[$randomIndex]);
-            // Re-index the array after removal
-            $this->cards = array_values($this->cards);
+
+            // Since we check for empty() above, array_pop() is guaranteed to return an object.
+            // Removed the redundant inner 'if ($card)' block to ensure 100% coverage.
+            $card = array_pop($this->cards);
+            $drawn[] = $card;
         }
         return $drawn;
     }

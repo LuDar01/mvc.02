@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          backupGlobals="false"
@@ -27,6 +26,13 @@
         <include>
             <directory suffix=".php">src</directory>
         </include>
+        <report>
+            <html outputDirectory="docs/coverage" lowUpperBound="35" highLowerBound="70"/> 
+            
+            <clover outputFile="docs/coverage.clover"/>
+            
+            <text outputFile="php://stdout" showUncoveredCode="true"/>
+        </report>
     </coverage>
 
     <listeners>
