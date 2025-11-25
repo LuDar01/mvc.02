@@ -66,7 +66,15 @@
 
 
     <h2>Kmom04</h2>
-    <div id='kmom04'> </div>
+    <div id='kmom04'> 
+    <p>
+    Det var mycket lärorikt att skriva kod som testar annan kod med PHPUnit, och jag upplever verktyget som oerhört kraftfullt för kvalitetssäkring. Att behöva tänka på alla möjliga vägar som koden kan ta tvingar fram en djupare förståelse för den egna logiken. Särskilt utmanande var det att skriva testerna för Game klassen, där jag var tvungen att simulera olika dragsekvenser för att hantera vinst, förlust och oavgjort. Jag lyckades till slut uppnå 100% kodtäckning för alla modellklasser, vilket överträffade kravet på mer än 90% med god marginal.</p>
+
+    <p>Jag upplever min egen kod som relativt testbar, särskilt de rena modellklasserna som Card och CardHand vilka är lätta att isolera och testa. Klassen DeckOfCards och särskilt Game krävde dock mocking av beroenden för att uppnå full täckning. Jag valde att skriva om delar av koden, specifikt metoden draw() i DeckOfCards, där jag ersatte den gamla lösningen med array_rand och unset med det säkrare array_pop för att lösa testfel relaterade till tomma arrayer. Denna omstrukturering gjorde kodbasen stabilare och enklare att testa.</p>
+
+    <p>Jag anser definitivt att kod som är lätt att testa även kan identifieras som snygg och ren kod, eftersom hög testbarhet kräver att koden är modulär, fri från globalt tillstånd och har tydliga ansvarsområden. Det tvingar bort komplicerade strukturer och resulterar i bättre design. Min TIL för detta kursmoment är hur man hanterar komplex mocking av sekventiella metoder med PHPUnit, och vikten av att skriva defensiv kod som tar höjd för att beroenden kan returnera oväntade värden som tomma arrayer.
+    </p>
+        </div>
 
     <h2>Kmom05</h2>
     <div id='kmom05'> </div>
