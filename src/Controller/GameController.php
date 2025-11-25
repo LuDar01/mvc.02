@@ -27,11 +27,11 @@ class GameController extends AbstractController
     public function play(SessionInterface $session): Response
     {
         $game = $session->get('game');
-        
+
         if (!$game) {
             return $this->redirectToRoute('game_start');
         }
-        
+
         return $this->render('game/play.twig', [
             'game' => $game
         ]);
@@ -42,7 +42,7 @@ class GameController extends AbstractController
     {
         $game = new Game();
         $session->set('game', $game);
-        
+
         return $this->redirectToRoute('game_play');
     }
 
@@ -50,14 +50,14 @@ class GameController extends AbstractController
     public function draw(SessionInterface $session): Response
     {
         $game = $session->get('game');
-        
+
         if (!$game) {
             return $this->redirectToRoute('game_start');
         }
 
         $game->playerDraw();
         $session->set('game', $game);
-        
+
         return $this->redirectToRoute('game_play');
     }
 
@@ -65,14 +65,14 @@ class GameController extends AbstractController
     public function stand(SessionInterface $session): Response
     {
         $game = $session->get('game');
-        
+
         if (!$game) {
             return $this->redirectToRoute('game_start');
         }
 
         $game->playerStand();
         $session->set('game', $game);
-        
+
         return $this->redirectToRoute('game_play');
     }
 
@@ -87,14 +87,14 @@ class GameController extends AbstractController
     public function apiGame(SessionInterface $session): JsonResponse
     {
         $game = $session->get('game');
-        
+
         if (!$game) {
             return $this->json([
                 'game_state' => 'not_started',
                 'message' => 'No active game'
             ]);
         }
-        
+
         return $this->json($game->toArray());
     }
 }
