@@ -25,13 +25,13 @@
 @media (max-width: 768px) {
     
     .site-header {
-        height: 150px;
+        height: 75px;
     }
 }
 
 @media (max-width: 480px) {
     
     .site-header {
-        height: 120px;
+        height: 50px;
     }
 }
