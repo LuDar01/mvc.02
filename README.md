@@ -56,4 +56,37 @@ This is an MVC (Model-View-Controller) project built with Symfony. The applicati
 | `/game/play` | The active 21 game board | [cite_start]`game/play.twig` [cite: 9] |
 | `/session` | View and manage current session data | [cite_start]`session.html.twig` [cite: 19] |
 
+## Quality Assurance and Development Tools
+
+The project leverages **Composer scripts** to enforce **high code quality**, run **unit tests**, and generate **API documentation**, ensuring the software's robustness and reliability.
+
+---
+
+### Code Quality Commands (Linters)
+
+| Command | Tool | Purpose |
+| :--- | :--- | :--- |
+| `composer csfix` | **PHP CS Fixer** | Automatically fixes code style according to **PSR standards**. |
+| `composer lint` | **PHPMD / PHPStan** | Runs **static analysis** to detect code flaws, potential bugs, and complexity issues. |
+
+---
+### Unit Testing and Coverage
+
+A comprehensive **test suite** is included for all model classes (**Card**, **DeckOfCards**, **Game**, etc.) to ensure reliable game logic.
+
+| Command | Tool | Purpose |
+| :--- | :--- | :--- |
+| `composer phpunit` | **PHPUnit (with Xdebug)** | Executes the test suite and generates the **code coverage report**. |
+
+> **Note:** The model classes currently maintain **100% code coverage** on all logic paths. The full HTML coverage report is generated in the `docs/coverage` directory.
+
+---
+
+### API Documentation
+
+The documentation is generated automatically from **DocBlock comments** within the source code.
+
+| Command | Tool | Purpose |
+| :--- | :--- | :--- |
+| `composer phpdoc` | **phpDocumentor** | Generates user-friendly **API documentation** for the source classes. |
 ---
