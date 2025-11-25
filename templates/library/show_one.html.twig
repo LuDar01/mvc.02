@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bokdetaljer: {{ book.title }}{% endblock %}
+
+{% block body %}
+    <h1>Bokdetaljer: {{ book.title }}</h1>
+    
+    <div class="book-details">
+        <img src="{{ asset(book.image) }}" alt="Omslag till {{ book.title }}" style="width:150px; border: 1px solid #ccc;"><br>
+        
+        <ul>
+            <li>**ID:** {{ book.id }}</li>
+            <li>**Titel:** {{ book.title }}</li>
+            <li>**Författare:** {{ book.author }}</li>
+            <li>**ISBN:** {{ book.isbn }}</li>
+        </ul>
+        
+        <p>
+            <a href="{{ path('library_update', {id: book.id}) }}">Redigera bok</a> | 
+            <a href="{{ path('library_show_all') }}">Tillbaka till listan</a>
+        </p>
+        
+<div style="margin-top: 15px;">
+        <form method="POST" action="{{ path('library_delete', {id: book.id}) }}" onsubmit="return confirm('Är du säker på att du vill radera boken {{ book.title }}? Detta kan inte ångras!');">
+            {# (DELETE-metoden kräver en POST, så vi skickar formuläret med POST) #}
+            <button type="submit" style="background-color: #dc3545; color: white; border: none; padding: 8px 15px; cursor: pointer;">
+                Radera bok
+            </button>
+        </form>
+    </div>
+{% endblock %}

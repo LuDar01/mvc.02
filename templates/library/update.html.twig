@@ -1,0 +1,31 @@
+{# templates/library/update.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Redigera: {{ book.title }}{% endblock %}
+
+{% block body %}
+    <h1>Redigera bok: {{ book.title }}</h1>
+    
+    {# VIKTIGT: Lägg till enctype="multipart/form-data" #}
+    <form method="POST" action="{{ path('library_update', {id: book.id}) }}" enctype="multipart/form-data">
+        
+        <label for="title">Titel:</label><br>
+        <input type="text" id="title" name="title" value="{{ book.title }}" required><br><br>
+        
+        <label for="isbn">ISBN:</label><br>
+        <input type="text" id="isbn" name="isbn" value="{{ book.isbn }}" required><br><br>
+        
+        <label for="author">Författare:</label><br>
+        <input type="text" id="author" name="author" value="{{ book.author }}" required><br><br>
+        
+        <label>Nuvarande bild:</label><br>
+        <img src="{{ asset(book.image) }}" alt="Omslag" style="width:100px; display:block; margin-bottom: 15px;"><br>
+        
+        <label for="image_file">Ladda upp *ny* bild (lämnas tom för att behålla nuvarande):</label><br>
+        <input type="file" id="image_file" name="image_file" accept="image/*"><br><br>
+        
+        <button type="submit">Spara ändringar</button>
+    </form>
+    
+    <p><a href="{{ path('library_show_one', {id: book.id}) }}">Avbryt och visa detaljer</a></p>
+{% endblock %}

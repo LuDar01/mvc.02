@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lägg till ny bok{% endblock %}
+
+{% block body %}
+    <h1>Lägg till ny bok</h1>
+    
+    {# VIKTIGT: Lägg till enctype="multipart/form-data" #}
+    <form method="POST" action="{{ path('library_create') }}" enctype="multipart/form-data">
+        
+        <label for="title">Titel:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+        
+        <label for="isbn">ISBN:</label><br>
+        <input type="text" id="isbn" name="isbn" required><br><br>
+        
+        <label for="author">Författare:</label><br>
+        <input type="text" id="author" name="author" required><br><br>
+        
+        <label for="image_file">Ladda upp Bild (Omslag):</label><br>
+        {# Ändra input-typ till file och ändra name till t.ex. 'image_file' #}
+        <input type="file" id="image_file" name="image_file" accept="image/*"><br><br>
+        
+        <button type="submit">Spara bok</button>
+    </form>
+    
+    <p><a href="{{ path('library_show_all') }}">Tillbaka till listan</a></p>
+{% endblock %}
