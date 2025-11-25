@@ -19,7 +19,8 @@
         <input type="text" id="author" name="author" value="{{ book.author }}" required><br><br>
         
         <label>Nuvarande bild:</label><br>
-        <img src="{{ asset(book.image) }}" alt="Omslag" style="width:100px; display:block; margin-bottom: 15px;"><br>
+        {% set base_path = '/~luda22/dbwebb-kurser/mvc/me/report/public' %}
+        <img src="{{ base_path ~ book.image }}" alt="Omslag" style="width:100px; display:block; margin-bottom: 15px;"><br>
         
         <label for="image_file">Ladda upp *ny* bild (lämnas tom för att behålla nuvarande):</label><br>
         <input type="file" id="image_file" name="image_file" accept="image/*"><br><br>

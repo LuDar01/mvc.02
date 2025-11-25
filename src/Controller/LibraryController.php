@@ -17,8 +17,7 @@ final class LibraryController extends AbstractController
     #[Route('/library', name: 'library_home')]
     public function index(): Response
     {
-        // Omdirigera till listan över alla böcker för att undvika en tom landningssida.
-        // Eller rendera en välkomstsida med länkar till CRUD.
+        // Omdirigera till listan över alla böcker.
         return $this->redirectToRoute('library_show_all'); 
     }
 
@@ -31,7 +30,7 @@ final class LibraryController extends AbstractController
             $entityManager = $doctrine->getManager();
             $book = new Book();
 
-            // 1. Hantera bilduppladdning
+            // Hantera bilduppladdning
             /** @var UploadedFile|null $imageFile */
             $imageFile = $request->files->get('image_file');
             
@@ -41,7 +40,7 @@ final class LibraryController extends AbstractController
                 // Skapa ett unikt filnamn
                 $newFilename = uniqid() . '.' . $imageFile->guessExtension();
                 
-                // Flytta filen till din 'public/uploads/images' katalog
+                // Flytta filen till 'public/uploads/images'
                 try {
                     $imageFile->move(
                         $this->getParameter('kernel.project_dir') . '/public/uploads/images',
@@ -50,19 +49,19 @@ final class LibraryController extends AbstractController
                     $imagePath = '/uploads/images/' . $newFilename;
 
                 } catch (\FileException $e) {
-                    // Hantera eventuella filuppladdningsfel här
+                    // Hantera filuppladdningsfel
                     $this->addFlash('error', 'Kunde inte ladda upp filen: ' . $e->getMessage());
                     return $this->redirectToRoute('library_create');
                 }
             }
             
-            // 2. Sätt övriga fält och den nya bildsökvägen
+            // Sätt övriga fält och bildsökvägen
             $book->setTitle($request->request->get('title'));
             $book->setIsbn($request->request->get('isbn'));
             $book->setAuthor($request->request->get('author'));
-            $book->setImage($imagePath); // Spara den genererade sökvägen
+            $book->setImage($imagePath);
             
-            // 3. Spara till databas
+            // Spara till databas
             $entityManager->persist($book);
             $entityManager->flush();
 
@@ -76,7 +75,7 @@ final class LibraryController extends AbstractController
 
     #[Route('/library/show', name: 'library_show_all')]
     public function showAllBooks(
-        BookRepository $bookRepository // Doctrine injicerar automatiskt
+        BookRepository $bookRepository
     ): Response {
         $books = $bookRepository->findAll();
 
@@ -111,10 +110,8 @@ final class LibraryController extends AbstractController
         $entityManager = $doctrine->getManager();
         $book = $entityManager->getRepository(Book::class)->find($id);
         
-        // ... (check if book exists) ...
-
         if ($request->isMethod('POST')) {
-            // ... (uppdatera titel, isbn, author) ...
+            // Uppdatera titel, isbn, author
             $book->setTitle($request->request->get('title'));
             $book->setIsbn($request->request->get('isbn'));
             $book->setAuthor($request->request->get('author'));
@@ -132,19 +129,20 @@ final class LibraryController extends AbstractController
                         $newFilename
                     );
                     
-                    // OM det finns en gammal fil som inte är default.jpg, RADEra den.
+                    // Radera den gamla filen om den finns och inte är standardbilden
                     if ($book->getImage() && $book->getImage() !== '/img/default.jpg' && file_exists($this->getParameter('kernel.project_dir') . '/public' . $book->getImage())) {
                         unlink($this->getParameter('kernel.project_dir') . '/public' . $book->getImage());
                     }
                     
-                    $book->setImage('/uploads/images/' . $newFilename);
+                    $imagePath = '/uploads/images/' . $newFilename;
+                    $book->setImage($imagePath);
 
                 } catch (\FileException $e) {
                     $this->addFlash('error', 'Kunde inte ladda upp ny fil: ' . $e->getMessage());
                 }
             }
             
-            // ... (Spara ändringarna till databasen och omdirigera) ...
+            // Spara ändringarna till databasen
             $entityManager->flush();
 
             $this->addFlash('success', 'Boken uppdaterades!');
@@ -172,7 +170,7 @@ final class LibraryController extends AbstractController
         // Steg 1: Tala om för Doctrine att denna entitet ska tas bort
         $entityManager->remove($book);
         
-        // Steg 2: Utför borttagningen (DELETE-frågan)
+        // Steg 2: Utför borttagningen
         $entityManager->flush();
 
         $this->addFlash('success', 'Boken "' . $book->getTitle() . '" raderades framgångsrikt.');
