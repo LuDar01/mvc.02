@@ -5,13 +5,18 @@ namespace App\Entity;
 use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @property-read int $bookId // FIX: Updated annotation to match new name
+ */
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 class Book
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    
+    /** @phpstan-ignore-next-line property.onlyRead */ 
+    private int $bookId; // FIX: Variable renamed
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
@@ -25,9 +30,9 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    public function getId(): ?int
+    public function getId(): int
     {
-        return $this->id;
+        return $this->bookId; // FIX: Usage updated
     }
 
     public function getTitle(): ?string

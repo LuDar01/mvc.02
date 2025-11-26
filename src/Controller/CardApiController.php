@@ -10,10 +10,21 @@ use App\Card\DeckOfCards;
 
 class CardApiController extends AbstractController
 {
+    private function loadDeck(SessionInterface $session): DeckOfCards
+    {
+        $deck = $session->get('deck');
+        if (!$deck instanceof DeckOfCards) {
+            $deck = new DeckOfCards();
+            $deck->shuffle();
+            $deck->saveToSession($session);
+        }
+        return $deck;
+    }
+
     #[Route('/api/deck', name: 'api_deck', methods: ['GET'])]
     public function getDeck(SessionInterface $session): JsonResponse
     {
-        $deck = DeckOfCards::loadFromSession($session);
+        $deck = $this->loadDeck($session);
 
         $cardsData = [];
         foreach ($deck->getCards() as $card) {
@@ -68,7 +79,7 @@ class CardApiController extends AbstractController
 
     private function drawCards(int $number, SessionInterface $session): JsonResponse
     {
-        $deck = DeckOfCards::loadFromSession($session);
+        $deck = $this->loadDeck($session);
 
         if ($number > $deck->count()) {
             return $this->json([

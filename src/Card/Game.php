@@ -11,7 +11,7 @@ class Game
 
     public function __construct()
     {
-        $this->deck = new DeckOfCards(true);
+        $this->deck = new DeckOfCards(CardStyle::Graphic);
         $this->deck->shuffle();
         $this->player = new CardHand();
         $this->bank = new CardHand();
@@ -20,7 +20,7 @@ class Game
 
     public function start(): void
     {
-        $this->deck = new DeckOfCards(true);
+        $this->deck = new DeckOfCards(CardStyle::Graphic);
         $this->deck->shuffle();
         $this->player = new CardHand();
         $this->bank = new CardHand();
@@ -77,15 +77,25 @@ class Game
 
         if ($playerScore > 21) {
             $this->state = 'bank_wins';
-        } elseif ($bankScore > 21) {
-            $this->state = 'player_wins';
-        } elseif ($playerScore > $bankScore) {
-            $this->state = 'player_wins';
-        } elseif ($bankScore > $playerScore) {
-            $this->state = 'bank_wins';
-        } else {
-            $this->state = 'draw';
+            return;
         }
+
+        if ($bankScore > 21) {
+            $this->state = 'player_wins';
+            return;
+        }
+
+        if ($playerScore > $bankScore) {
+            $this->state = 'player_wins';
+            return;
+        }
+
+        if ($bankScore > $playerScore) {
+            $this->state = 'bank_wins';
+            return;
+        }
+
+        $this->state = 'draw';
     }
 
     public function calculateScore(CardHand $hand): int
@@ -95,14 +105,16 @@ class Game
 
         foreach ($hand->getCards() as $card) {
             $value = $card->getValue();
+            $cardValueToAdd = $value;
+
             if ($value == 1) {
                 $aces++;
-                $score += 11;
+                $cardValueToAdd = 11;
             } elseif ($value > 10) {
-                $score += 10;
-            } else {
-                $score += $value;
+                $cardValueToAdd = 10;
             }
+
+            $score += $cardValueToAdd;
         }
 
         while ($score > 21 && $aces > 0) {

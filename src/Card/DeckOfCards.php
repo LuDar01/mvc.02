@@ -8,14 +8,17 @@ class DeckOfCards
 {
     private array $cards = [];
 
-    public function __construct(bool $useGraphics = true)
+    public function __construct(CardStyle $style = CardStyle::Graphic)
     {
         $suits = ['hearts', 'spades', 'clubs', 'diamonds'];
         $values = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
 
         foreach ($suits as $suit) {
             foreach ($values as $value) {
-                $this->cards[] = $useGraphics ? new CardGraphic($suit, $value) : new Card($suit, $value);
+                $this->cards[] = match ($style) {
+                    CardStyle::Graphic => new CardGraphic($suit, $value),
+                    CardStyle::Basic   => new Card($suit, $value),
+                };
             }
         }
     }
@@ -29,13 +32,10 @@ class DeckOfCards
     {
         $drawn = [];
         for ($i = 0; $i < $num; $i++) {
-            // Check if array is empty *before* trying to draw/access
             if (empty($this->cards)) {
                 break;
             }
 
-            // Since we check for empty() above, array_pop() is guaranteed to return an object.
-            // Removed the redundant inner 'if ($card)' block to ensure 100% coverage.
             $card = array_pop($this->cards);
             $drawn[] = $card;
         }
@@ -75,15 +75,13 @@ class DeckOfCards
             return $deck;
         }
 
-        $deck = new self();
+        $deck = new self(CardStyle::Basic); // overwritten anyway
         $deck->cards = [];
 
         foreach ($deckData as $cardData) {
-            if ($cardData['type'] === 'graphic') {
-                $deck->cards[] = new CardGraphic($cardData['suit'], $cardData['value']);
-            } else {
-                $deck->cards[] = new Card($cardData['suit'], $cardData['value']);
-            }
+            $deck->cards[] = $cardData['type'] === 'graphic'
+                ? new CardGraphic($cardData['suit'], $cardData['value'])
+                : new Card($cardData['suit'], $cardData['value']);
         }
 
         return $deck;
