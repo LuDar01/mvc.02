@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="38" assertions="72" errors="8" warnings="0" failures="0" skipped="0" time="0.021313">
+    <testsuite name="Project Test Suite" tests="38" assertions="72" errors="8" warnings="0" failures="0" skipped="0" time="0.021313">
+      <testsuite name="App\Tests\Card\CardGraphicTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" tests="4" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.003494">
+        <testcase name="testCreateCardGraphicObject" class="App\Tests\Card\CardGraphicTest" classname="App.Tests.Card.CardGraphicTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="16" assertions="1" time="0.003175"/>
+        <testcase name="testGetUnicode" class="App\Tests\Card\CardGraphicTest" classname="App.Tests.Card.CardGraphicTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="25" assertions="4" time="0.000229"/>
+        <testcase name="testGetSuitSymbol" class="App\Tests\Card\CardGraphicTest" classname="App.Tests.Card.CardGraphicTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="41" assertions="2" time="0.000055"/>
+        <testcase name="testGetSuitClass" class="App\Tests\Card\CardGraphicTest" classname="App.Tests.Card.CardGraphicTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="53" assertions="1" time="0.000036"/>
+      </testsuite>
+      <testsuite name="App\Tests\Card\CardHandTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" tests="3" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.000733">
+        <testcase name="testCreateCardHandObject" class="App\Tests\Card\CardHandTest" classname="App.Tests.Card.CardHandTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="17" assertions="1" time="0.000164"/>
+        <testcase name="testAddAndCountCards" class="App\Tests\Card\CardHandTest" classname="App.Tests.Card.CardHandTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="26" assertions="3" time="0.000055"/>
+        <testcase name="testGetCards" class="App\Tests\Card\CardHandTest" classname="App.Tests.Card.CardHandTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardHandTest.php" line="44" assertions="3" time="0.000514"/>
+      </testsuite>
+      <testsuite name="App\Tests\Card\CardTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" tests="7" assertions="15" errors="0" warnings="0" failures="0" skipped="0" time="0.001615">
+        <testcase name="testCreateCardObject" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="16" assertions="3" time="0.000064"/>
+        <testcase name="testGetNumericValue" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="27" assertions="1" time="0.000067"/>
+        <testcase name="testGetFaceCardValue" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="36" assertions="3" time="0.000079"/>
+        <testcase name="testGetAceValue" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="49" assertions="1" time="0.000062"/>
+        <testcase name="testGetUnknownValue" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="58" assertions="1" time="0.000064"/>
+        <testcase name="testGetAsString" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="67" assertions="1" time="0.000050"/>
+        <testcase name="testRoll" class="App\Tests\Card\CardTest" classname="App.Tests.Card.CardTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="76" assertions="5" time="0.001230"/>
+      </testsuite>
+      <testsuite name="App\Tests\Card\DeckOfCardsTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" tests="10" assertions="7" errors="8" warnings="0" failures="0" skipped="0" time="0.011989">
+        <testcase name="testCreateBasicDeck" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="31" assertions="0" time="0.000643">
+          <error type="TypeError">App\Tests\Card\DeckOfCardsTest::testCreateBasicDeck
+TypeError: App\Card\DeckOfCards::__construct(): Argument #1 ($style) must be of type App\Card\CardStyle, false given, called in /home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php on line 33
+
+/home/lutfia/dbwebb-kurser/mvc/me/report/src/Card/DeckOfCards.php:11
+/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php:33</error>
+        </testcase>
+        <testcase name="testCreateGraphicDeck" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="44" assertions="0" time="0.000234">
+          <error type="TypeError">App\Tests\Card\DeckOfCardsTest::testCreateGraphicDeck
+TypeError: App\Card\DeckOfCards::__construct(): Argument #1 ($style) must be of type App\Card\CardStyle, true given, called in /home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php on line 46
+
+/home/lutfia/dbwebb-kurser/mvc/me/report/src/Card/DeckOfCards.php:11
+/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php:46</error>
+        </testcase>
+        <testcase name="testShuffle" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="56" assertions="0" time="0.000238">
+          <error type="TypeError">App\Tests\Card\DeckOfCardsTest::testShuffle
+TypeError: App\Card\DeckOfCards::__construct(): Argument #1 ($style) must be of type App\Card\CardStyle, false given, called in /home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php on line 58
+
+/home/lutfia/dbwebb-kurser/mvc/me/report/src/Card/DeckOfCards.php:11
+/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php:58</error>
+        </testcase>
+        <testcase name="testDrawOne" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="70" assertions="0" time="0.000311">
+          <error type="TypeError">App\Tests\Card\DeckOfCardsTest::testDrawOne
+TypeError: App\Card\DeckOfCards::__construct(): Argument #1 ($style) must be of type App\Card\CardStyle, false given, called in /home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php on line 72
+
+/home/lutfia/dbwebb-kurser/mvc/me/report/src/Card/DeckOfCards.php:11
+/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php:72</error>
+        </testcase>
+        <testcase name="testDrawMultiple" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="84" assertions="0" time="0.000246">
+          <error type="TypeError">App\Tests\Card\DeckOfCardsTest::testDrawMultiple
+TypeError: App\Card\DeckOfCards::__construct(): Argument #1 ($style) must be of type App\Card\CardStyle, false given, called in /home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php on line 86
+
+/home/lutfia/dbwebb-kurser/mvc/me/report/src/Card/DeckOfCards.php:11
+/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php:86</error>
+        </testcase>
+        <testcase name="testDrawMoreThanAvailable" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="100" assertions="0" time="0.000293">
+          <error type="TypeError">App\Tests\Card\DeckOfCardsTest::testDrawMoreThanAvailable
+TypeError: App\Card\DeckOfCards::__construct(): Argument #1 ($style) must be of type App\Card\CardStyle, false given, called in /home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php on line 102
+
+/home/lutfia/dbwebb-kurser/mvc/me/report/src/Card/DeckOfCards.php:11
+/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php:102</error>
+        </testcase>
+        <testcase name="testSaveToSessionBasicCard" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="116" assertions="0" time="0.000263">
+          <error type="TypeError">App\Tests\Card\DeckOfCardsTest::testSaveToSessionBasicCard
+TypeError: App\Card\DeckOfCards::__construct(): Argument #1 ($style) must be of type App\Card\CardStyle, false given, called in /home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php on line 118
+
+/home/lutfia/dbwebb-kurser/mvc/me/report/src/Card/DeckOfCards.php:11
+/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php:118</error>
+        </testcase>
+        <testcase name="testSaveToSessionWithGraphicCard" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="135" assertions="0" time="0.000243">
+          <error type="TypeError">App\Tests\Card\DeckOfCardsTest::testSaveToSessionWithGraphicCard
+TypeError: App\Card\DeckOfCards::__construct(): Argument #1 ($style) must be of type App\Card\CardStyle, true given, called in /home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php on line 137
+
+/home/lutfia/dbwebb-kurser/mvc/me/report/src/Card/DeckOfCards.php:11
+/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php:137</error>
+        </testcase>
+        <testcase name="testLoadFromEmptySession" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="155" assertions="3" time="0.009197"/>
+        <testcase name="testLoadFromExistingSession" class="App\Tests\Card\DeckOfCardsTest" classname="App.Tests.Card.DeckOfCardsTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="176" assertions="4" time="0.000321"/>
+      </testsuite>
+      <testsuite name="App\Tests\Card\GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" tests="14" assertions="35" errors="0" warnings="0" failures="0" skipped="0" time="0.003483">
+        <testcase name="testCreateGameObject" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="19" assertions="6" time="0.000388"/>
+        <testcase name="testStartGame" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="33" assertions="3" time="0.000289"/>
+        <testcase name="testCalculateScoreStandard" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="66" assertions="3" time="0.000126"/>
+        <testcase name="testCalculateScoreSingleAce" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="85" assertions="2" time="0.000120"/>
+        <testcase name="testCalculateScoreMultipleAcesHigh" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="100" assertions="1" time="0.000092"/>
+        <testcase name="testCalculateScoreAcesReduced" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="111" assertions="2" time="0.000104"/>
+        <testcase name="testPlayerDrawAndBust" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="128" assertions="3" time="0.000857"/>
+        <testcase name="testPlayerStandAndBankBusts" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="164" assertions="1" time="0.000226"/>
+        <testcase name="testPlayerStandAndPlayerWinsByScore" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="201" assertions="1" time="0.000166"/>
+        <testcase name="testPlayerStandAndBankWins" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="237" assertions="2" time="0.000208"/>
+        <testcase name="testDetermineWinnerDraw" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="273" assertions="1" time="0.000153"/>
+        <testcase name="testGetScores" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="305" assertions="2" time="0.000108"/>
+        <testcase name="testToArrayStructure" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="327" assertions="6" time="0.000337"/>
+        <testcase name="testPlayerDrawEmptyDeck" class="App\Tests\Card\GameTest" classname="App.Tests.Card.GameTest" file="/home/lutfia/dbwebb-kurser/mvc/me/report/tests/Card/GameTest.php" line="342" assertions="2" time="0.000309"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
