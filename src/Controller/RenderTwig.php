@@ -44,6 +44,8 @@ class RenderTwig extends AbstractController
             ['path' => '/api/deck/draw', 'name' => 'Draw Card', 'description' => 'Draw 1 card', 'method' => 'POST'],
             ['path' => '/api/deck/draw/{number}', 'name' => 'Draw Multiple Cards', 'description' => 'Draws {number} cards', 'method' => 'POST'],
             ['path' => '/api/game', 'name' => 'Game Status', 'description' => 'Current game state and scores', 'method' => 'GET'],
+            ['path' => '/api/library/books', 'name' => 'Library: Show All Books', 'description' => 'Lists all books in the library', 'method' => 'GET'],
+            ['path' => '/api/library/book/{isbn}', 'name' => 'Library: Show One Book by ISBN', 'description' => 'Shows one book via its ISBN', 'method' => 'POST', 'example' => '/api/library/book/1234567891111'],
         ];
 
         return $this->render('json_api.html.twig', ['routes' => $routes]);

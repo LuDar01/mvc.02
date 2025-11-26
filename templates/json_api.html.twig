@@ -11,38 +11,70 @@
 <ul>
     {% for route in routes %}
         {% set cleanPath = route.path|replace({'//':'/'})|trim('/') %}
-        {% set cleanPath = '/' ~ cleanPath %}
-        {% set fullPath = app.request.basePath ~ cleanPath %}
+        {% set fullPath = '/' ~ cleanPath %}
 
         <li style="margin-bottom: 12px;">
 
             {% if route.method == 'GET' %}
                 <a href="{{ fullPath }}" target="_blank">{{ route.name }}</a>
+                {% if route.example is defined %}
+                    <br><small>Example: <a href="{{ app.request.basePath ~ route.example }}" target="_blank">{{ route.example }}</a></small>
+                {% endif %}
 
             {% else %}
+                {# This section handles POST requests #}
 
                 {% if '{number}' in route.path %}
-                    {# Draw multiple cards - use path parameter #}
+                    {# Draw multiple cards (POST with {number} in path) #}
                     <form method="post" style="display:inline-block;" id="drawForm{{ loop.index }}">
                         <input type="number" name="number" min="1" max="52" value="3" placeholder="number" required 
-                               onchange="updateDrawAction({{ loop.index }}, this.value)">
+                               onchange="updateAction({{ loop.index }}, this.value, 'draw')">
                         <button type="submit">{{ route.name }} (POST)</button>
                     </form>
 
                     <script>
-                        function updateDrawAction(formIndex, number) {
+                        function updateAction(formIndex, value, type) {
                             const base = "{{ app.request.basePath }}";
-                            document.getElementById('drawForm' + formIndex).action =
-                                base + "/api/deck/draw/" + number;
+                            let path = "";
+                            if (type === 'draw') {
+                                path = base + "/api/deck/draw/" + value;
+                            } else if (type === 'isbn') {
+                                path = base + "/api/library/book/" + value;
+                            }
+                            document.getElementById('form-' + formIndex).action = path;
                         }
 
+                        // Initialize the draw form action
                         document.addEventListener('DOMContentLoaded', function() {
-                            updateDrawAction({{ loop.index }}, 3);
+                            const drawInput = document.querySelector('#drawForm{{ loop.index }} input[name="number"]');
+                            if (drawInput) {
+                                updateAction({{ loop.index }}, drawInput.value, 'draw');
+                            }
+                        });
+                    </script>
+
+                {% elseif '{isbn}' in route.path %}
+                    {# Library: Show One Book by ISBN (POST with {isbn} in path) #}
+                    {% set formId = 'form-' ~ loop.index %}
+                    <form method="post" style="display:inline-block;" id="{{ formId }}">
+                        <input type="text" name="isbn" placeholder="ISBN (e.g., 1234567891111)" required 
+                               onchange="updateAction({{ loop.index }}, this.value, 'isbn')">
+                        <button type="submit">{{ route.name }} (POST)</button>
+                    </form>
+
+                    <script>
+                        // Initialize the ISBN form action with a placeholder
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const isbnInput = document.querySelector('#{{ formId }} input[name="isbn"]');
+                            if (isbnInput) {
+                                // Set initial action to avoid literal {isbn} being sent
+                                updateAction({{ loop.index }}, '{{ route.example|split('/')|last }}', 'isbn');
+                                isbnInput.value = '{{ route.example|split('/')|last }}'; // Pre-fill with example
+                            }
                         });
                     </script>
 
                 {% else %}
-                    {# Simple POST #}
                     <form action="{{ fullPath }}" method="post" style="display:inline-block;">
                         <button type="submit">{{ route.name }} (POST)</button>
                     </form>

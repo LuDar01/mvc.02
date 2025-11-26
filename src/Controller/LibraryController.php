@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use App\Entity\Book;
 use App\Repository\BookRepository;
@@ -178,4 +179,52 @@ final class LibraryController extends AbstractController
         // Omdirigera till listan över alla böcker efter radering
         return $this->redirectToRoute('library_show_all');
     }
+
+    // --- Nya API-routar för biblioteket ---
+
+    #[Route('/api/library/books', name: 'api_library_show_all', methods: ['GET'])]
+    public function apiShowAllBooks(
+        BookRepository $bookRepository
+    ): JsonResponse {
+        $books = $bookRepository->findAll();
+
+        // Använder array_map för att konvertera varje Book-objekt till en array
+        $data = array_map(function (Book $book) {
+            return [
+                'id' => $book->getId(),
+                'title' => $book->getTitle(),
+                'isbn' => $book->getIsbn(),
+                'author' => $book->getAuthor(),
+                'image' => $book->getImage(),
+            ];
+        }, $books);
+
+        return new JsonResponse($data);
+    }
+
+    #[Route('/api/library/book/{isbn}', name: 'api_library_show_one_isbn_post_url', methods: ['POST'])]
+        public function apiShowBookByIsbnPostUrl(
+            BookRepository $bookRepository,
+            string $isbn
+        ): JsonResponse {
+            // Använder findOneBy(['isbn' => $isbn]) för att hitta boken
+            $book = $bookRepository->findOneBy(['isbn' => $isbn]);
+
+            if (!$book) {
+                return new JsonResponse([
+                    'error' => 'Book not found',
+                    'isbn' => $isbn
+                ], Response::HTTP_NOT_FOUND); // Returnerar 404-status
+            }
+
+            $data = [
+                'id' => $book->getId(),
+                'title' => $book->getTitle(),
+                'isbn' => $book->getIsbn(),
+                'author' => $book->getAuthor(),
+                'image' => $book->getImage(),
+            ];
+
+            return new JsonResponse($data);
+        }
 }
