@@ -77,7 +77,17 @@
         </div>
 
     <h2>Kmom05</h2>
-    <div id='kmom05'> </div>
+    <div id='kmom05'> 
+
+    <p>Att implementera CRUD-funktionaliteten med Symfony och Doctrine var både lärorikt och effektivt, även om det krävdes en del felsökning, särskilt med små, men kritiska detaljer. Jag reagerade starkt på hur ett enkelt namnbyte i kontrollern, från `$id` till `$bookId` för att klara PHPMD-reglerna, omedelbart skapade kedjereaktioner i både Twig-mallar och `redirectToRoute`-anrop, vilket krävde en komplett synkronisering av alla dessa delar.</p>
+
+    <p>Min applikation, ett digitalt bibliotek, byggdes med fokus på tydlig separation mellan Entiteter, Kontroller och Vyer, vilket gjorde det lätt att överblicka flödet. Jag ägnade särskild uppmärksamhet åt användargränssnittet för att säkerställa att formulär för skapande och uppdatering, inklusive hantering av bildfiler, fungerade smidigt i olika miljöer. Att arbeta med Doctrine ORM för CRUD var mycket intuitivt och snabbt, särskilt vid uppdateringar där man bara ändrar ett objekt och kör `$entityManager->flush()`.</p>
+
+    <p>Jämfört med att skriva rå SQL är ORM otroligt mycket säkrare och effektivare för standardoperationer, då det tar bort risken för SQL Injection. Min uppfattning är att ORM är en fantastisk lösning för majoriteten av applikationslogiken, även om jag inser att det kan lägga till ett abstraktionslager som kan vara besvärligt vid komplexa, prestandakritiska databasförfrågningar. För vår typ av projekt är dock den ökade produktiviteten och den renare koden helt klart värt det.</p>
+
+    <p>Min stora TIL (Today I Learned) från detta moment är vikten av att förstå den totala kedjan i Symfony/Doctrine; ändra en ruttparameter, och du måste följa den ändringen genom varje Twig-länk, varje PHP-omdirigering, och se till att databasen är uppdaterad med `migrations:migrate`.</p>
+        
+    </div>
 
     <h2>Kmom06</h2>
     <div id='kmom06'> </div>
