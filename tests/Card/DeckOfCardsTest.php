@@ -5,6 +5,7 @@ namespace App\Tests\Card;
 use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\DeckOfCards;
+use App\Card\CardStyle; // Added import
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -30,7 +31,7 @@ class DeckOfCardsTest extends TestCase
      */
     public function testCreateBasicDeck()
     {
-        $deck = new DeckOfCards(false);
+        $deck = new DeckOfCards(CardStyle::Basic); // Changed from false
         $this->assertInstanceOf('\App\Card\DeckOfCards', $deck);
         $this->assertEquals(52, $deck->count());
         $this->assertInstanceOf('\App\Card\Card', $deck->getCards()[0]);
@@ -43,7 +44,7 @@ class DeckOfCardsTest extends TestCase
      */
     public function testCreateGraphicDeck()
     {
-        $deck = new DeckOfCards(true);
+        $deck = new DeckOfCards(CardStyle::Graphic); // Changed from true
         $this->assertInstanceOf('\App\Card\DeckOfCards', $deck);
         $this->assertEquals(52, $deck->count());
         $this->assertInstanceOf('\App\Card\CardGraphic', $deck->getCards()[0]);
@@ -55,7 +56,7 @@ class DeckOfCardsTest extends TestCase
      */
     public function testShuffle()
     {
-        $deck = new DeckOfCards(false);
+        $deck = new DeckOfCards(CardStyle::Basic); // Changed from false
         $initialCount = $deck->count();
         $deck->shuffle();
         $this->assertEquals($initialCount, $deck->count());
@@ -69,7 +70,7 @@ class DeckOfCardsTest extends TestCase
      */
     public function testDrawOne()
     {
-        $deck = new DeckOfCards(false);
+        $deck = new DeckOfCards(CardStyle::Basic); // Changed from false
         $initialCount = $deck->count();
         $drawn = $deck->draw(1);
 
@@ -83,7 +84,7 @@ class DeckOfCardsTest extends TestCase
      */
     public function testDrawMultiple()
     {
-        $deck = new DeckOfCards(false);
+        $deck = new DeckOfCards(CardStyle::Basic); // Changed from false
         $initialCount = $deck->count();
         $drawn = $deck->draw(5);
 
@@ -99,7 +100,7 @@ class DeckOfCardsTest extends TestCase
      */
     public function testDrawMoreThanAvailable()
     {
-        $deck = new DeckOfCards(false);
+        $deck = new DeckOfCards(CardStyle::Basic); // Changed from false
         $drawn = $deck->draw(60); // Try to draw 60 from 52
 
         $this->assertCount(52, $drawn);
@@ -115,7 +116,7 @@ class DeckOfCardsTest extends TestCase
      */
     public function testSaveToSessionBasicCard()
     {
-        $deck = new DeckOfCards(false);
+        $deck = new DeckOfCards(CardStyle::Basic); // Changed from false
         $session = $this->getMockSession();
 
         $session->expects($this->once())
@@ -134,7 +135,7 @@ class DeckOfCardsTest extends TestCase
      */
     public function testSaveToSessionWithGraphicCard()
     {
-        $deck = new DeckOfCards(true); // Graphic cards
+        $deck = new DeckOfCards(CardStyle::Graphic); // Changed from true
         $session = $this->getMockSession();
 
         $session->expects($this->once())

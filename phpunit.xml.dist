@@ -31,7 +31,7 @@
             
             <clover outputFile="docs/coverage.clover"/>
             
-            <text outputFile="php://stdout" showUncoveredCode="true"/>
+            <text outputFile="php://stdout"/>
         </report>
     </coverage>
 
