@@ -18,7 +18,7 @@ class DeckOfCardsTest extends TestCase
     /**
      * Helper to create a mock session.
      */
-    private function getMockSession(): SessionInterface
+    private function getMockSession(): SessionInterface&\PHPUnit\Framework\MockObject\MockObject
     {
         return $this->createMock(SessionInterface::class);
     }
