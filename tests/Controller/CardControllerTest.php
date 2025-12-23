@@ -16,7 +16,7 @@ class CardControllerTest extends WebTestCase
     public function testDeckViewWithAndWithoutSession(): void
     {
         $client = static::createClient();
-        
+
         // Första anropet skapar leken (täcker "if (!$deck)")
         $client->request('GET', '/card/deck');
         $this->assertResponseIsSuccessful();

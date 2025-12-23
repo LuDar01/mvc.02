@@ -14,8 +14,8 @@ class Book
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    
-    /** @phpstan-ignore-next-line property.onlyRead */ 
+
+    /** @phpstan-ignore-next-line property.onlyRead */
     private int $bookId; // FIX: Variable renamed
 
     #[ORM\Column(length: 255)]

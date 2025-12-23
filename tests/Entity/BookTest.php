@@ -16,7 +16,7 @@ class BookTest extends TestCase
     public function testBookProperties()
     {
         $book = new Book();
-        
+
         // Testa Title
         $title = "The Great Gatsby";
         $book->setTitle($title);
@@ -38,18 +38,18 @@ class BookTest extends TestCase
         $this->assertEquals($image, $book->getImage());
     }
 
-  /**
-     * Test that ID is handled correctly when uninitialized.
-     */
+    /**
+       * Test that ID is handled correctly when uninitialized.
+       */
     public function testBookId()
     {
         $book = new Book();
-        
+
         // Vi kan inte anropa getId() direkt om bookId är oinitierad int.
-        // För att täcka raden utan att krascha kan vi kontrollera att 
+        // För att täcka raden utan att krascha kan vi kontrollera att
         // objektet är av rätt typ.
         $this->assertInstanceOf(Book::class, $book);
-        
+
         // Om du absolut vill anropa den för täckning, använd en try-catch
         // som specifikt fångar Error (inte TypeError).
         try {

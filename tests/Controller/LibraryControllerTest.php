@@ -16,7 +16,7 @@ class LibraryControllerTest extends WebTestCase
     public function testLibraryShowPages(): void
     {
         $client = static::createClient();
-        
+
         $client->request('GET', '/library/show');
         $this->assertResponseIsSuccessful();
 
@@ -27,7 +27,7 @@ class LibraryControllerTest extends WebTestCase
     public function testLibraryApiRoutes(): void
     {
         $client = static::createClient();
-        
+
         // Alla böcker API
         $client->request('GET', '/api/library/books');
         $this->assertResponseIsSuccessful();

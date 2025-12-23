@@ -22,7 +22,7 @@ class GameControllerTest extends WebTestCase
     public function testRedirectsWithoutSession(): void
     {
         $client = static::createClient();
-        
+
         $routes = ['/game/play', '/game/draw', '/game/stand'];
         foreach ($routes as $route) {
             $client->request('GET', $route);

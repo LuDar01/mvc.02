@@ -426,6 +426,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-LuckyNumber.html#method_number"
         },                {
+            "fqsen": "\\App\\Controller\\MetricsController",
+            "name": "MetricsController",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html#method_index"
+        },                {
             "fqsen": "\\App\\Controller\\RenderTwig",
             "name": "RenderTwig",
             "summary": "",
@@ -550,6 +560,16 @@ Search.appendIndex(
             "name": "Kernel",
             "summary": "",
             "url": "classes/App-Kernel.html"
+        },                {
+            "fqsen": "\\App\\Kernel\u003A\u003A\u0024instanceof",
+            "name": "instanceof",
+            "summary": "",
+            "url": "classes/App-Kernel.html#property_instanceof"
+        },                {
+            "fqsen": "\\App\\Kernel\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/App-Kernel.html#property_name"
         },                {
             "fqsen": "\\App\\Repository\\BookRepository",
             "name": "BookRepository",
