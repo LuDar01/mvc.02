@@ -1,5 +1,9 @@
 # MVC Project
 
+[![Build Status](https://scrutinizer-ci.com/g/LuDar01/mvc.02/badges/build.png?b=master)](https://scrutinizer-ci.com/g/LuDar01/mvc.02/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/LuDar01/mvc.02/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/LuDar01/mvc.02/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LuDar01/mvc.02/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LuDar01/mvc.02/?branch=master)
+
 This is an MVC (Model-View-Controller) project built with Symfony. The application demonstrates object-oriented programming (OOP) principles through a card application, the game of 21, and a comprehensive CRUD library.
 
 ## Features
