@@ -12,6 +12,4 @@ class Kernel extends BaseKernel
     // Add these to satisfy the Scrutinizer check
     private $instanceof = [];
     protected $name; 
-
-    // ... rest of your code
 }

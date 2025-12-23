@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Analys av Kodkvalitet{% endblock %}
+
+{% block body %}
+<div class="metrics-container" style="max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.6;">
+    <h1 style="border-bottom: 2px solid #333; padding-bottom: 10px;">Analys av Kodkvalitet</h1>
+
+    {# Introduktion och 6C #}
+    <section style="margin-bottom: 40px;">
+        <h2>Introduktion</h2>
+        <p>
+            Att skriva kod handlar inte bara om att få saker att fungera, utan också om att göra koden hållbar över tid. För att mäta detta använder jag mig av de sex "C:na", vilka fungerar som kompass för att nå en "clean code"-standard.
+        </p>
+        <ul style="background: #f9f9f9; padding: 20px; border-radius: 8px; list-style-type: none;">
+            <li style="margin-bottom: 10px;"><strong>Codestyle:</strong> Handlar om läsbarhet. Genom att följa standarder som PSR-12 blir koden enhetlig, vilket gör det lättare för andra att sätta sig in i projektet.</li>
+            <li style="margin-bottom: 10px;"><strong>Coverage:</strong> Testtäckning visar hur stor del av logiken som faktiskt kontrolleras av automatiska tester. Hög täckning minskar risken för regressionsfel.</li>
+            <li style="margin-bottom: 10px;"><strong>Complexity:</strong> Cyklomatisk komplexitet mäter antalet beslutsvägar i koden. Ju fler if-satser och loopar, desto svårare är koden att förstå och underhålla.</li>
+            <li style="margin-bottom: 10px;"><strong>Cohesion:</strong> Sammanhållning beskriver hur väl metoderna i en klass hör ihop. En klass med hög sammanhållning fokuserar på en enda uppgift (Single Responsibility).</li>
+            <li style="margin-bottom: 10px;"><strong>Coupling:</strong> Koppling mäter beroenden mellan klasser. Hög koppling innebär att en ändring på ett ställe riskerar att påverka hela systemet negativt.</li>
+            <li style="margin-bottom: 10px;"><strong>CRAP:</strong> Ett index som väger samman komplexitet med bristande testtäckning. En komplex metod utan tester får ett högt och därmed dåligt CRAP-värde.</li>
+        </ul>
+    </section>
+
+    {# PhpMetrics Analys #}
+    <section style="margin-bottom: 40px;">
+        <h2>PhpMetrics</h2>
+        <p>Genom PhpMetrics fick jag en bra överblick av projektets hälsa. Här identifierade jag tre tydliga svagheter eller "flaskhalsar" att arbeta vidare med:</p>
+        <ul>
+            <li><strong>Låg testtäckning:</strong> Inledningsvis visade rapporten att endast 29.41% av klasserna anropades av tester, vilket lämnade stora delar av applikationen osäkrad.</li>
+            <li><strong>Hög komplexitet i spel-logik:</strong> Genomsnittet för komplexitet per klass låg på 4.06, men specifika klasser som <code>Game.php</code> hade betydligt högre värden (27).</li>
+            <li><strong>Efferent Coupling:</strong> Med ett genomsnitt på 2.47 fanns det klasser med många utgående beroenden, vilket gör dem känsliga för framtida ändringar i systemet.</li>
+        </ul>
+        
+    </section>
+
+    {# Scrutinizer Analys #}
+    <section style="margin-bottom: 40px;">
+        <h2>Scrutinizer</h2>
+        <p>Scrutinizer gav en djupare analys av enskilda filer. Trots att de flesta filer fick betyget A, hittades kritiska punkter som behövde åtgärdas:</p>
+        <ul>
+            <li><strong>Kritiska buggar i tester:</strong> I <code>DeckOfCardsTest</code> flaggades "Major Bugs" rörande mock-objekt som inte tycktes följa interfacet korrekt, vilket sänkte förtroendet för analysen.</li>
+            <li><strong>Hög komplexitet:</strong> Analysen bekräftade att <code>App\Card\Game</code> hade en komplexitet på 27, vilket var projektets högsta och en tydlig kandidat för refaktorisering.</li>
+            <li><strong>Otestade Controllers:</strong> Flera controllers, som <code>LibraryController</code> och <code>GameController</code>, startade på 0% täckning trots att de innehåller central rutt-logik.</li>
+        </ul>
+        
+        <div class="badges" style="display: flex; gap: 10px; margin-top: 20px;">
+            <a href="https://scrutinizer-ci.com/g/LuDar01/mvc.02/?branch=master">
+                <img src="https://scrutinizer-ci.com/g/LuDar01/mvc.02/badges/quality-score.png?b=master" alt="Quality Score">
+            </a>
+            <a href="https://scrutinizer-ci.com/g/LuDar01/mvc.02/?branch=master">
+                <img src="https://scrutinizer-ci.com/g/LuDar01/mvc.02/badges/coverage.png?b=master" alt="Coverage">
+            </a>
+            <a href="https://scrutinizer-ci.com/g/LuDar01/mvc.02/?branch=master">
+                <img src="https://scrutinizer-ci.com/g/LuDar01/mvc.02/badges/build.png?b=master" alt="Build Status">
+            </a>
+        </div>
+    </section>
+
+    {# Förbättringar #}
+    <section style="margin-bottom: 40px;">
+        <h2>Förbättringar</h2>
+        <p>Jag genomförde tre huvudsakliga åtgärder för att lyfta kvaliteten baserat på de identifierade svagheterna:</p>
+        <ul>
+            <li><strong>Fixa Scrutinizer-issues:</strong> Genom PHPDoc-annotations i testerna (intersection types) och korrigeringar i <code>Kernel.php</code> har jag eliminerat tidigare "Major Bugs".</li>
+            <li><strong>Minska komplexitet:</strong> Genom "Extract Method"-principen bröts logiken i <code>Game.php</code> och dess kontroller ner till mindre hjälpmetoder för att sänka den cyklomatiska komplexiteten.</li>
+            <li><strong>Öka täckning:</strong> Genom att skriva dedikerade tester för controllers och entiteter (t.ex. <code>Book.php</code>) höjdes den totala linjetäckningen avsevärt.</li>
+        </ul>
+
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+                <tr style="background: #333; color: #fff; text-align: left;">
+                    <th style="padding: 10px;">Mätvärde</th>
+                    <th style="padding: 10px;">Före</th>
+                    <th style="padding: 10px;">Efter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px;">Total linjetäckning (Lines)</td>
+                    <td style="padding: 10px;">29.41%</td>
+                    <td style="padding: 10px;">56.49%</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px;">Metodtäckning (Book.php)</td>
+                    <td style="padding: 10px;">0%</td>
+                    <td style="padding: 10px;">100.00%</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px;">Metodtäckning (GameController)</td>
+                    <td style="padding: 10px;">0%</td>
+                    <td style="padding: 10px;">87.50%</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    {# Diskussion #}
+    <section style="margin-bottom: 40px;">
+        <h2>Diskussion</h2>
+        <p>
+            Att jobba med dessa verktyg har gett mig en tydlig insikt i att fungerande kod inte är synonymt med bra kod. Genom att visualisera komplexitet och täckning blir det uppenbart var de framtida underhållsproblemen kommer att uppstå.
+        </p>
+        <p>
+            <strong>Fördelar:</strong> Verktygen ger konkreta mål och omedelbar feedback när refaktorisering lyckas. Att tvinga upp täckningen i mina controllers synliggjorde logiska vägar jag tidigare inte beaktat.
+        </p>
+        <p>
+            <strong>Nackdelar:</strong> Det finns en risk att man jagar siffror (täckning) på bekostnad av att skriva kvalitativa och meningsfulla tester. Det är viktigt att komma ihåg att 100% täckning inte garanterar en felfri applikation. 
+        </p>
+        <p>
+            <strong>Framtiden:</strong> För att bibehålla en ren kodbas ser jag möjligheter i att integrera dessa tester i en CI/CD-pipeline och fortsätta arbeta med designmönster som minskar koppling (coupling) från första kodraden.
+        </p>
+    </section>
+</div>
+{% endblock %}
