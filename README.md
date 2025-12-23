@@ -28,24 +28,24 @@ This is an MVC (Model-View-Controller) project built with Symfony. The applicati
 
 ## Requirements
 
-* **PHP** (version 7.4 or higher)
+* **PHP** (version 8.2 or higher recommended)
 * **Composer** for dependency management
 * **Symfony CLI** (optional but recommended)
 
 ## Installation
 
-1.  **Clone the repository:**
+1.  **Clone the repository:**
     ```bash
     git clone [https://github.com/LuDar01/mvc.02.git](https://github.com/LuDar01/mvc.02.git)
     cd mvc.02
     ```
 
-2.  **Install dependencies:**
+2.  **Install dependencies:**
     ```bash
     composer install
     ```
 
-3.  **Run the application (using Symfony CLI):**
+3.  **Run the application (using Symfony CLI):**
     ```bash
     symfony serve
     ```
@@ -55,7 +55,7 @@ This is an MVC (Model-View-Controller) project built with Symfony. The applicati
 
 To ensure the application functions correctly both locally and when deployed to the student web server (running under a sub-directory and requiring `.htaccess` routing), the following adjustments were made:
 
-* **Image Path Handling:** Twig templates use **conditional logic** (`app.request.host`) to generate correct absolute image paths. This is essential because the standard `asset()` function fails to resolve relative paths correctly when the application is hosted in a subfolder on the BTH server, but works fine locally.
+* **Image Path Handling:** Twig templates use **conditional logic** (`app.request.host`) to generate correct absolute image paths. This is essential because the standard `asset()` function fails to resolve relative paths correctly när applikationen ligger i en underkatalog på BTH-servern.
 * **Controller Consistency:** The `LibraryController` was refactored to ensure variable definitions (`$imagePath`) and file management logic were robust and consistent across `create` and `update` operations, eliminating "undefined variable" errors during file uploads.
 
 ## Key Routes
@@ -66,13 +66,14 @@ To ensure the application functions correctly both locally and when deployed to 
 | `/about` | Information about the MVC course and architecture | `about.html.twig` |
 | `/report` | Collection of course moment (kmom) reports | `report.html.twig` |
 | `/lucky` | Displays a dynamic lucky number | `lucky_number.html.twig` |
-| `/api` | Landing page for all JSON API endpoints | [cite_start]`json_api.html.twig` [cite: 1] |
+| `/api` | Landing page for all JSON API endpoints | `json_api.html.twig` |
 | `/card` | Home for the card application and class structure | `card/index.twig` |
 | `/game` | Home and rules for the 21 game | `game/home.twig` |
-| `/game/play` | The active 21 game board | [cite_start]`game/play.twig` [cite: 9] |
+| `/game/play` | The active 21 game board | `game/play.twig` |
 | `/session` | View and manage current session data | `session.html.twig` |
 | `/library/show` | List all books in the library | `library/show.html.twig` |
 | `/library/create` | Add a new book | `library/create.html.twig` |
+| `/metrics` | Analysis of code quality (kmom06) | `metrics/index.html.twig` |
 
 ## Quality Assurance and Development Tools
 
@@ -86,6 +87,7 @@ The project leverages **Composer scripts** to enforce **high code quality**, run
 | :--- | :--- | :--- |
 | `composer csfix` | **PHP CS Fixer** | Automatically fixes code style according to **PSR standards**. |
 | `composer lint` | **PHPMD / PHPStan** | Runs **static analysis** to detect code flaws, potential bugs, and complexity issues. |
+| `composer metrics` | **Phpmetrics** | Generates quality metrics and HTML reports for visual analysis. |
 
 ---
 ### Unit Testing and Coverage
