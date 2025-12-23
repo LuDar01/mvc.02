@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Blackjack Project{% endblock %}</title>
+
+        {% block stylesheets %}
+            {# Vi skapar en ny entry för projektets CSS #}
+            {{ encore_entry_link_tags('proj') }}
+        {% endblock %}
+    </head>
+
+    <body class="proj-body">
+        <nav class="navbar proj-nav">
+            <a class="navbar-brand" href="{{ path('proj_home') }}">Blackjack Proj</a>
+
+            <ul class="nav-menu">
+                <li><a href="{{ path('proj_home') }}">Hem</a></li>
+                <li><a href="{{ path('proj_about') }}">Om projektet</a></li>
+                <li><a href="{{ path('proj_game') }}">Spela</a></li>
+                {# Om du gör krav 4 sen lägger du till API här #}
+                <li><a href="{{ path('me') }}">Tillbaka till Report</a></li>
+            </ul>
+            
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+
+        <header class="proj-header">
+            <div class="header-overlay">
+                <h1>{% block header_title %}Blackjack{% endblock %}</h1>
+            </div>
+        </header>
+
+        <main class="proj-main">
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer class="proj-footer">
+            <p>&copy; {{ "now"|date("Y") }} LuDa Blackjack - Kursen MVC</p>
+        </footer>
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>

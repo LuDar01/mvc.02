@@ -1,0 +1,17 @@
+{% extends 'proj_base.html.twig' %}
+
+{% block title %}Blackjack - Hem{% endblock %}
+{% block header_title %}Välkommen till Blackjack Proj{% endblock %}
+
+{% block body %}
+    <div class="proj-container">
+        <section class="proj-welcome">
+            <h2>Ett klassiskt kortspel</h2>
+            <p>Detta är mitt slutprojekt i kursen mvc. Jag har valt att implementera kortspelet Blackjack.</p>
+            <div class="proj-actions">
+                <a href="{{ path('proj_game') }}" class="btn-play">Starta spelet</a>
+                <a href="{{ path('proj_about') }}" class="btn-info">Läs om projektet</a>
+            </div>
+        </section>
+    </div>
+{% endblock %}

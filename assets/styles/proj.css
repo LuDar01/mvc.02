@@ -1,0 +1,74 @@
+:root {
+    --proj-bg: #076324; /* Casinogrön */
+    --proj-gold: #d4af37;
+    --proj-dark: #1a1a1a;
+    --proj-white: #ffffff;
+    --proj-accent: #c0c0c0;
+}
+
+body.proj-body {
+    background-color: var(--proj-bg);
+    color: var(--proj-white);
+    font-family: 'Georgia', serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.proj-nav {
+    background-color: var(--proj-dark);
+    border-bottom: 3px solid var(--proj-gold);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.proj-nav .navbar-brand {
+    color: var(--proj-gold);
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.proj-nav .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    margin: 0;
+}
+
+.proj-nav .nav-menu a {
+    color: var(--proj-white);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.proj-nav .nav-menu a:hover {
+    color: var(--proj-gold);
+}
+
+.proj-header {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: rgba(0, 0, 0, 0.3); /* Istället för bild */
+    border-bottom: 1px solid var(--proj-gold);
+}
+
+.proj-main {
+    flex: 1;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.proj-footer {
+    background-color: var(--proj-dark);
+    color: var(--proj-accent);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+}
