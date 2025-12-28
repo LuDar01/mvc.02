@@ -60,6 +60,11 @@
     line-height: 1;
     transform: rotate(180deg);
 }
+.card.back {
+    background: #222;
+    color: #fff;
+    border-color: #000;
+}
 
 @media (max-width: 768px) {
     .card {

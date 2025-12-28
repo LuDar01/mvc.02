@@ -1,6 +1,81 @@
 Search.appendIndex(
     [
                 {
+            "fqsen": "\\App\\Card\\BlackjackGame",
+            "name": "BlackjackGame",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003AinitialDeal\u0028\u0029",
+            "name": "initialDeal",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#method_initialDeal"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003AplayerHit\u0028\u0029",
+            "name": "playerHit",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#method_playerHit"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003AplayerStand\u0028\u0029",
+            "name": "playerStand",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#method_playerStand"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003AdealerPlay\u0028\u0029",
+            "name": "dealerPlay",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#method_dealerPlay"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003AresolveWinner\u0028\u0029",
+            "name": "resolveWinner",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#method_resolveWinner"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003AcalculateScore\u0028\u0029",
+            "name": "calculateScore",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#method_calculateScore"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003AgetPlayerHand\u0028\u0029",
+            "name": "getPlayerHand",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#method_getPlayerHand"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003AgetDealerHand\u0028\u0029",
+            "name": "getDealerHand",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#method_getDealerHand"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003AgetStatus\u0028\u0029",
+            "name": "getStatus",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#method_getStatus"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003A\u0024deck",
+            "name": "deck",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#property_deck"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003A\u0024playerHand",
+            "name": "playerHand",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#property_playerHand"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003A\u0024dealerHand",
+            "name": "dealerHand",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#property_dealerHand"
+        },                {
+            "fqsen": "\\App\\Card\\BlackjackGame\u003A\u003A\u0024status",
+            "name": "status",
+            "summary": "",
+            "url": "classes/App-Card-BlackjackGame.html#property_status"
+        },                {
             "fqsen": "\\App\\Card\\Card",
             "name": "Card",
             "summary": "Class\u0020Card\u0020represents\u0020a\u0020single\u0020playing\u0020card\u0020with\u0020a\u0020suit\u0020and\u0020a\u0020value.",
@@ -435,6 +510,41 @@ Search.appendIndex(
             "name": "index",
             "summary": "",
             "url": "classes/App-Controller-MetricsController.html#method_index"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController",
+            "name": "ProjController",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003Ahome\u0028\u0029",
+            "name": "home",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_home"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003Aabout\u0028\u0029",
+            "name": "about",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_about"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003Agame\u0028\u0029",
+            "name": "game",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_game"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003Ahit\u0028\u0029",
+            "name": "hit",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_hit"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003Astand\u0028\u0029",
+            "name": "stand",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_stand"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003Areset\u0028\u0029",
+            "name": "reset",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_reset"
         },                {
             "fqsen": "\\App\\Controller\\RenderTwig",
             "name": "RenderTwig",

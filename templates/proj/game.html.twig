@@ -1,0 +1,103 @@
+{% extends 'proj_base.html.twig' %}
+
+{% block title %}Blackjack - Spela{% endblock %}
+{% block header_title %}Blackjack{% endblock %}
+
+{% block body %}
+<div class="game-board">
+
+    {# DEALER SECTION #}
+    <div class="bank-section">
+        <h2>Dealer 
+            {% if game.getStatus() != 'playing' %}
+                <span class="score-badge">(Poäng: {{ game.calculateScore(game.getDealerHand()) }})</span>
+            {% endif %}
+        </h2>
+
+        <div class="card-container">
+            {% for card in game.getDealerHand().getCards() %}
+                {# Om spelet pågår: Visa bara första kortet, dölj resten #}
+                {% if loop.first or game.getStatus() != 'playing' %}
+                    <div class="card {{ card.getSuitClass() }}">
+                        <div class="card-top">
+                            {{ card.getValueAsString() }}{{ card.getSuitSymbol() }}
+                        </div>
+                        <div class="card-center">
+                            {{ card.getSuitSymbol() }}
+                        </div>
+                        <div class="card-bottom">
+                            {{ card.getValueAsString() }}{{ card.getSuitSymbol() }}
+                        </div>
+                    </div>
+                {% else %}
+                    {# Dolt kort #}
+                    <div class="card back">
+                        <div class="card-inner">
+                            <div class="card-center">?</div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <hr class="game-divider">
+
+    {# PLAYER SECTION #}
+    <div class="player-section">
+        <h2>Spelare <span class="score-badge">(Poäng: {{ game.calculateScore(game.getPlayerHand()) }})</span></h2>
+
+        <div class="card-container">
+            {% for card in game.getPlayerHand().getCards() %}
+                <div class="card {{ card.getSuitClass() }}">
+                    <div class="card-top">
+                        {{ card.getValueAsString() }}{{ card.getSuitSymbol() }}
+                    </div>
+                    <div class="card-center">
+                        {{ card.getSuitSymbol() }}
+                    </div>
+                    <div class="card-bottom">
+                        {{ card.getValueAsString() }}{{ card.getSuitSymbol() }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {# CONTROLS & RESULTS #}
+    <div class="game-controls">
+        {% if game.getStatus() == 'playing' %}
+            <div class="action-buttons">
+                <form method="post" action="{{ path('proj_game_hit') }}" style="display: inline;">
+                    <button type="submit" class="btn-play">Hit</button>
+                </form>
+
+                <form method="post" action="{{ path('proj_game_stand') }}" style="display: inline;">
+                    <button type="submit" class="btn-info">Stand</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="result-box">
+                <h3 class="status-msg">
+                    {% if game.getStatus() == 'player_win' %}
+                        Spelaren har vunnit.
+                    {% elseif game.getStatus() == 'dealer_bust' %}
+                        Dealern är tjock. Spelaren vinner.
+                    {% elseif game.getStatus() == 'player_bust' %}
+                        Spelaren är tjock. Huset vinner.
+                    {% elseif game.getStatus() == 'dealer_win' %}
+                        Dealern har vunnit runden.
+                    {% elseif game.getStatus() == 'push' %}
+                        Resultatet är oavgjort.
+                    {% endif %}
+                </h3>
+
+                <form method="post" action="{{ path('proj_game_reset') }}">
+                    <button type="submit" class="btn-play">New game</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}
