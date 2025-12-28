@@ -32,7 +32,7 @@ class ProjControllerTest extends WebTestCase
         $client->request('GET', '/proj/game');
 
         $this->assertResponseIsSuccessful();
-        
+
         // Kontrollera att spelet finns i sessionen
         $session = $client->getRequest()->getSession();
         $this->assertTrue($session->has('blackjack_game'));
@@ -45,7 +45,7 @@ class ProjControllerTest extends WebTestCase
     public function testGameHit(): void
     {
         $client = static::createClient();
-        
+
         // Initiera spelet först
         $client->request('GET', '/proj/game');
         $session = $client->getRequest()->getSession();
@@ -54,7 +54,7 @@ class ProjControllerTest extends WebTestCase
 
         // Skicka HIT
         $client->request('POST', '/proj/game/hit');
-        
+
         // Kontrollera redirect
         $this->assertResponseRedirects('/proj/game');
         $client->followRedirect();
@@ -74,10 +74,10 @@ class ProjControllerTest extends WebTestCase
 
         $client->request('POST', '/proj/game/stand');
         $this->assertResponseRedirects('/proj/game');
-        
+
         $session = $client->getRequest()->getSession();
         $game = $session->get('blackjack_game');
-        
+
         // Status bör inte längre vara 'playing' efter stand
         $this->assertNotEquals('playing', $game->getStatus());
     }
@@ -88,7 +88,7 @@ class ProjControllerTest extends WebTestCase
     public function testGameReset(): void
     {
         $client = static::createClient();
-        
+
         // Skapa ett spel i sessionen
         $client->request('GET', '/proj/game');
         $this->assertTrue($client->getRequest()->getSession()->has('blackjack_game'));
@@ -97,7 +97,7 @@ class ProjControllerTest extends WebTestCase
         $client->request('GET', '/proj/game/reset');
         $this->assertResponseRedirects('/proj/game');
 
-        // Efter redirect till /proj/game skapas ett NYTT spel, 
+        // Efter redirect till /proj/game skapas ett NYTT spel,
         // men vi kollar sessionen direkt efter reset-anropet
         $client->followRedirect();
         $this->assertResponseIsSuccessful();

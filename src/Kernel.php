@@ -15,6 +15,6 @@ class Kernel extends BaseKernel
     // Add these to satisfy the Scrutinizer check
     /** @phpstan-ignore-next-line */
     private $instanceof = [];
-    
+
     protected $name;
 }

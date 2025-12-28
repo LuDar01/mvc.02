@@ -28,10 +28,12 @@ class BlackjackGame
 
     public function playerHit(): void
     {
-        if ($this->status !== 'playing') return;
+        if ($this->status !== 'playing') {
+            return;
+        }
 
         $this->playerHand->add($this->deck->draw(1)[0]);
-        
+
         if ($this->calculateScore($this->playerHand) > 21) {
             $this->status = 'player_bust';
         }
@@ -39,7 +41,9 @@ class BlackjackGame
 
     public function playerStand(): void
     {
-        if ($this->status !== 'playing') return;
+        if ($this->status !== 'playing') {
+            return;
+        }
 
         $this->dealerPlay();
     }
@@ -97,7 +101,16 @@ class BlackjackGame
     }
 
     // Getters för templaten
-    public function getPlayerHand(): CardHand { return $this->playerHand; }
-    public function getDealerHand(): CardHand { return $this->dealerHand; }
-    public function getStatus(): string { return $this->status; }
+    public function getPlayerHand(): CardHand
+    {
+        return $this->playerHand;
+    }
+    public function getDealerHand(): CardHand
+    {
+        return $this->dealerHand;
+    }
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
 }

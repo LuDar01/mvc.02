@@ -42,7 +42,7 @@ class ProjController extends AbstractController
     public function hit(SessionInterface $session): Response
     {
         $game = $session->get('blackjack_game');
-        
+
         if ($game instanceof BlackjackGame) {
             $game->playerHit();
             $session->set('blackjack_game', $game);
@@ -55,7 +55,7 @@ class ProjController extends AbstractController
     public function stand(SessionInterface $session): Response
     {
         $game = $session->get('blackjack_game');
-        
+
         if ($game instanceof BlackjackGame) {
             $game->playerStand();
             $session->set('blackjack_game', $game);
@@ -64,7 +64,7 @@ class ProjController extends AbstractController
         return $this->redirectToRoute('proj_game');
     }
 
-  
+
     #[Route("/proj/game/reset", name: "proj_game_reset", methods: ['GET', 'POST'])]
     public function reset(SessionInterface $session): Response
     {

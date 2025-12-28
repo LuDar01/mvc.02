@@ -15,7 +15,7 @@ This is an MVC (Model-View-Controller) project built with Symfony. The applicati
     * **Database Integration**: Implements full CRUD functionality against a database table (`Book` entity).
     * **File Uploads**: Handles file upload for book cover images (`image_file`) with persistence of the file path.
     * **Old File Management**: Includes logic to safely **delete the old cover image file** when a book is updated with a new one.
-* **Landing Pages**: Various routes with HTML responses rendered through Twig templates (`me`, `about`, `report`, `lucky`, `card`, `game`).
+* **Landing Pages**: Various routes with HTML responses rendered through Twig templates (`me`, `about`, `report`, `lucky`, `card`, `game`, `projekt` ).
 * **JSON API Endpoints**: Provides various API endpoints, including:
     * Getting the current deck.
     * Shuffling the deck (POST).
@@ -26,7 +26,7 @@ This is an MVC (Model-View-Controller) project built with Symfony. The applicati
 * **Documentation**: Includes a documentation page (`/game/doc`) with the game's flowchart, pseudocode, and a description of the core classes.
 * **Random Number Generation**: Generates and displays a random lucky number.
 * **Blackjack (Final Project)**: A professional implementation of the classic card game under the `/proj` directory.
-    * **Legit Blackjack Logic**: Uses a dedicated `BlackjackGame` class that handles Ace values (1 or 11) and dealer AI rules (dealer stands on 17).
+    * **Blackjack Logic**: Uses a dedicated `BlackjackGame` class that handles Ace values (1 or 11) and dealer AI rules (dealer stands on 17).
     * **Unique Styling**: Features a custom casino-themed look using `proj.css` to distinguish it from the main report site.
 
 ## Requirements

@@ -190,9 +190,9 @@ class BlackjackGameTest extends TestCase
         $game = new BlackjackGame();
         // Vi ger dealern ett lågt kort manuellt så vi vet att hen måste dra
         $game->getDealerHand()->add(new Card('hearts', '2'));
-        
+
         $game->playerStand();
-        
+
         $this->assertNotSame('playing', $game->getStatus());
         // Dealern ska nu ha minst 17 poäng
         $this->assertGreaterThanOrEqual(17, $game->calculateScore($game->getDealerHand()));
@@ -208,7 +208,7 @@ class BlackjackGameTest extends TestCase
         while ($game->getStatus() === 'playing') {
             $game->playerHit();
         }
-        
+
         $statusBefore = $game->getStatus();
         $game->playerStand(); // Ska returnera tidigt
         $this->assertSame($statusBefore, $game->getStatus());
@@ -224,7 +224,7 @@ class BlackjackGameTest extends TestCase
         $hand->add(new Card('hearts', 'J'));
         $hand->add(new Card('spades', 'Q'));
         $hand->add(new Card('diamonds', 'K'));
-        
+
         $this->assertSame(30, $game->calculateScore($hand));
     }
 
@@ -238,7 +238,7 @@ class BlackjackGameTest extends TestCase
         $hand->add(new Card('hearts', 'A'));
         $hand->add(new Card('spades', 'A'));
         $hand->add(new Card('diamonds', 'A'));
-        
+
         // 11 + 1 + 1 = 13 (Endast ett Ess kan vara 11 utan att gå över 21)
         $this->assertSame(13, $game->calculateScore($hand));
     }
