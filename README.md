@@ -25,6 +25,9 @@ This is an MVC (Model-View-Controller) project built with Symfony. The applicati
 * **Session Management**: A dedicated page to view and delete the current session data, including the number of cards remaining in the deck.
 * **Documentation**: Includes a documentation page (`/game/doc`) with the game's flowchart, pseudocode, and a description of the core classes.
 * **Random Number Generation**: Generates and displays a random lucky number.
+* **Blackjack (Final Project)**: A professional implementation of the classic card game under the `/proj` directory.
+    * **Legit Blackjack Logic**: Uses a dedicated `BlackjackGame` class that handles Ace values (1 or 11) and dealer AI rules (dealer stands on 17).
+    * **Unique Styling**: Features a custom casino-themed look using `proj.css` to distinguish it from the main report site.
 
 ## Requirements
 
@@ -47,7 +50,7 @@ This is an MVC (Model-View-Controller) project built with Symfony. The applicati
 
 3.  **Run the application (using Symfony CLI):**
     ```bash
-    symfony serve
+    symfony serve or php -S localhost:8889 -t public
     ```
     The application will typically be available at `http://127.0.0.1:8000`.
 
@@ -74,6 +77,9 @@ To ensure the application functions correctly both locally and when deployed to 
 | `/library/show` | List all books in the library | `library/show.html.twig` |
 | `/library/create` | Add a new book | `library/create.html.twig` |
 | `/metrics` | Analysis of code quality (kmom06) | `metrics/index.html.twig` |
+| `/proj` | Landing page for the Blackjack project | `proj/index.html.twig` |
+| `/proj/about` | Information and goals for the project | `proj/about.html.twig` |
+| `/proj/game` | The active Blackjack game board | `proj/game.html.twig` |
 
 ## Quality Assurance and Development Tools
 

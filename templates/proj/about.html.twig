@@ -5,17 +5,22 @@
 
 {% block body %}
     <article class="proj-article">
-        <h2>Projektbeskrivning</h2>
-        <p>Denna webbplats är en del av examinationen i kursen mvc (v2) på BTH.</p>
-        <p>Projektet går ut på att bygga ett Blackjack-spel med objektorienterad PHP, där vi använder ramverket Symfony.</p>
+        <h2>Introduktion</h2>
+        <p>Detta projekt utgör den avslutande examinationen i kursen MVC vid Blekinge Tekniska Högskola. Syftet med projektet är att tillämpa kunskaper inom objektorienterad programmering, ramverksbaserad webbutveckling och automatiserad testning genom att utveckla en webbapplikation från grunden.</p>
         
-        <h3>Mål</h3>
+        <p>Valet av applikation föll på kortspelet Blackjack. Spelet är implementerat i PHP med ramverket Symfony och följer designmönstret Model-View-Controller för att säkerställa en tydlig separation mellan affärslogik, datahantering och det grafiska gränssnittet.</p>
+        
+        <h3>Systemets uppbyggnad</h3>
+        <p>Applikationen bygger på en spelmotor som hanterar kortlekar, händer och poängberäkning enligt spelets officiella regler. Logiken för poängsättning tar hänsyn till essets dubbla värde (1 eller 11) och säkerställer att dealern följer fastställda regler för när kort ska dras eller stannas.</p>
+
+        <h3>Teknisk genomförande</h3>
         <ul>
-            <li>Skapa en stabil spelmotor för Blackjack.</li>
-            <li>Använda MVC-mönstret för att separera logik från presentation.</li>
-            <li>Uppfylla kraven för enhetstestning och kodtäckning.</li>
+            <li><strong>Objektorientering:</strong> Logiken är uppdelad i klasser som representerar spelets olika entiteter (kort, kortlek och spelmotor).</li>
+            <li><strong>Testning:</strong> För att säkerställa stabilitet har omfattande enhetstester skrivits med PHPUnit, med målet att uppnå hög kodtäckning.</li>
+            <li><strong>Gränssnitt:</strong> Utseendet är byggt med Twig-mallar och anpassad CSS för att skapa en visuell miljö som skiljer sig från kursens tidigare övningar.</li>
+            <li><strong>Kvalitetssäkring:</strong> Koden analyseras via verktyg som Scrutinizer och Phpmetrics för att bibehålla en hög teknisk standard och läsbarhet.</li>
         </ul>
 
-        <p><a href="https://github.com/dbwebb-se/mvc">Länk till kursens repo</a></p>
+        <p><a href="https://github.com/dbwebb-se/mvc" class="btn-info">Kursens källkod på GitHub</a></p>
     </article>
 {% endblock %}
